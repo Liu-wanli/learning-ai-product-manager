@@ -17,6 +17,12 @@
       "description": "记录新建GitHub仓库、上传网站文件、补充Actions、开启Pages和查看网站链接的具体操作。",
       "date": "Day03",
       "url": "notes/day03.html"
+    },
+    {
+      "title": "100天｜AI研学产品经理每日学习详细计划",
+      "description": "精确到每天的AI研学产品经理100天学习计划，包含学习重点、练习任务和每日产出。",
+      "date": "",
+      "url": "notes/ai-pm-100-day-detailed-roadmap.html"
     }
   ],
   "ai-practice": [
