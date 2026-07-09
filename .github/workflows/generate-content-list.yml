@@ -7,9 +7,7 @@ on:
     paths:
       - "notes/**/*.html"
       - "ai-practice/**/*.html"
-      - "learning-camp/**/*.html"
       - "projects/**/*.html"
-      - "english/**/*.html"
       - "scripts/generate-content-list.js"
       - ".github/workflows/generate-content-list.yml"
   workflow_dispatch:
