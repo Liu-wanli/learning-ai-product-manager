@@ -1,6 +1,12 @@
 {
   "notes": [
     {
+      "title": "Day01｜学会向AI提问",
+      "description": "100天AI研学产品经理学习计划 Day01：学会向AI提问，掌握背景、目标、要求、输出格式四步提问法。",
+      "date": "Day01",
+      "url": "notes/day01-ai-questioning-v2.html"
+    },
+    {
       "title": "Day01｜建立我的AI产品经理学习网站",
       "description": "记录网站搭建的第一步：仓库、首页和学习入口。",
       "date": "Day01",
