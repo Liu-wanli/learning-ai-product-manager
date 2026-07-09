@@ -1,0 +1,42 @@
+{
+  "notes": [
+    {
+      "title": "Day01｜建立我的AI产品经理学习网站",
+      "description": "记录网站搭建的第一步：仓库、首页和学习入口。",
+      "date": "Day01",
+      "url": "notes/day01.html"
+    }
+  ],
+  "ai-practice": [
+    {
+      "title": "AI工具入口与提示词清单",
+      "description": "保存常用AI工具和适合产品经理的提示词。",
+      "date": "工具库",
+      "url": "ai-practice/toolbox.html"
+    }
+  ],
+  "learning-camp": [
+    {
+      "title": "Learning Camp｜学习路径总览",
+      "description": "整理训练营课程、任务和阶段目标。",
+      "date": "Camp01",
+      "url": "learning-camp/camp01.html"
+    }
+  ],
+  "projects": [
+    {
+      "title": "项目记录｜AI产品经理学习中心",
+      "description": "记录这个网站从想法到上线的过程。",
+      "date": "Project01",
+      "url": "projects/learning-site.html"
+    }
+  ],
+  "english": [
+    {
+      "title": "Day01｜GitHub常用英语",
+      "description": "repository、commit、branch、deploy 等基础词。",
+      "date": "Day01",
+      "url": "english/day01.html"
+    }
+  ]
+}
