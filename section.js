@@ -15,16 +15,35 @@ async function loadSectionContent() {
       return;
     }
 
-    list.innerHTML = items.map((item) => `
-      <a class="content-card" href="../${item.url}">
-        <span class="date">${item.date || "未设置日期"}</span>
+    list.innerHTML = items.map((item, index) => `
+      <a class="content-card reveal" style="--delay: ${index * 55}ms" href="../${item.url}">
+        <div class="content-topline">
+          <span class="date">${item.date || "未设置日期"}</span>
+          <span class="open-indicator">Open</span>
+        </div>
         <h2>${item.title}</h2>
         <p>${item.description || "点击查看正文。"}</p>
       </a>
     `).join("");
+
+    setupReveal();
   } catch {
     list.innerHTML = '<article class="content-card empty">目录还没有生成，等 Actions 运行完成后再刷新。</article>';
   }
+}
+
+function setupReveal() {
+  const items = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  items.forEach((item) => observer.observe(item));
 }
 
 loadSectionContent();

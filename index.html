@@ -7,20 +7,70 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <nav class="topbar">
-      <a class="brand" href="index.html">AI PM Learning</a>
-      <span class="status">Personal Growth Hub</span>
-    </nav>
-    <section class="hero-content">
-      <p class="eyebrow">AI产品经理成长看板</p>
-      <h1>把每天的学习、实操、项目和英语沉淀成一个长期网站。</h1>
-      <p class="hero-text">首页只保留核心入口，具体内容进入对应板块查看。以后新增内容，只需要上传到对应文件夹。</p>
+  <div class="aurora" aria-hidden="true"></div>
+  <nav class="shell-nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AI</span>
+      <span>PM Learning OS</span>
+    </a>
+    <div class="nav-links" aria-label="主要导航">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#workspace">Workspace</a>
+      <a href="#system">System</a>
+    </div>
+    <span class="status-dot"><span></span> Live workspace</span>
+  </nav>
+
+  <header class="hero home-hero">
+    <section class="hero-content reveal">
+      <p class="eyebrow">AI Native Product Manager Learning Center</p>
+      <h1>你的 AI 产品经理学习操作系统。</h1>
+      <p class="hero-text">把每日学习、AI实操、项目记录、训练营内容和英语词汇，整理成一个持续生长的高级知识工作台。</p>
+      <div class="hero-actions">
+        <a class="primary-action magnetic" href="#dashboard">进入学习看板</a>
+        <a class="secondary-action magnetic" href="sections/notes.html">查看学习笔记</a>
+      </div>
     </section>
+    <aside class="system-panel reveal" aria-label="系统状态">
+      <div class="panel-topline">
+        <span>Learning System</span>
+        <strong id="total-count">0</strong>
+      </div>
+      <div class="signal-grid">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <p>Content sync powered by GitHub Actions. Every upload becomes part of the workspace.</p>
+    </aside>
   </header>
 
   <main class="layout">
+    <section class="section-heading reveal" id="dashboard">
+      <p class="eyebrow">Dashboard</p>
+      <h2>核心学习模块</h2>
+      <p>首页只做总览和入口，具体内容进入对应板块查看。</p>
+    </section>
     <section class="dashboard" id="section-dashboard"></section>
+
+    <section class="workspace-strip reveal" id="workspace">
+      <article class="insight-card">
+        <span class="mini-label">Today</span>
+        <h2>保持输入，持续沉淀。</h2>
+        <p>每一次上传，都会让这个学习系统更接近你的个人 AI 产品经理知识库。</p>
+      </article>
+      <article class="insight-card subtle">
+        <span class="mini-label">Workflow</span>
+        <h2>Upload → Sync → Publish</h2>
+        <p>上传 HTML 内容，Actions 自动更新目录，GitHub Pages 自动发布。</p>
+      </article>
+    </section>
+
+    <section class="system-note reveal" id="system">
+      <span class="mini-label">System principle</span>
+      <p>内容文件、页面结构、视觉样式和自动化脚本相互分层。以后升级网站时，优先替换对应模块文件，不需要重做所有内容。</p>
+    </section>
   </main>
 
   <footer class="footer">
