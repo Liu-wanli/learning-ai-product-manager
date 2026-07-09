@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day02｜新建GitHub仓库并发布个人网站完整流程</title>
+  <meta name="description" content="从新建仓库、上传网站文件、开启GitHub Pages，到测试自动更新的完整步骤。" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <a class="brand" href="../index.html">AI PM Learning</a>
+      <a class="back" href="../sections/notes.html">返回笔记列表</a>
+    </nav>
+  </header>
+
+  <main class="article">
+    <h1>Day02｜新建GitHub仓库并发布个人网站完整流程</h1>
+    <p>今天记录从零创建一个 GitHub 网站仓库、上传网站文件、开启 GitHub Pages、补充自动更新流程，并测试新笔记是否能自动出现在网站里的完整过程。</p>
+
+    <h2>一、目标</h2>
+    <p>我要搭建一个长期使用的个人学习网站，用来沉淀 AI 产品经理学习过程中的内容。</p>
+    <p>这个网站需要支持：</p>
+    <ul>
+      <li>首页作为学习看板，只展示核心板块入口。</li>
+      <li>每个板块都有自己的列表页。</li>
+      <li>上传新 HTML 内容后，对应列表可以自动更新。</li>
+      <li>网站通过 GitHub Pages 免费发布。</li>
+    </ul>
+
+    <h2>二、整体流程</h2>
+    <ol>
+      <li>新建 GitHub 仓库。</li>
+      <li>上传网站项目文件。</li>
+      <li>补充 GitHub Actions 自动化文件。</li>
+      <li>开启 GitHub Pages。</li>
+      <li>等待 Actions 和 Pages 执行完成。</li>
+      <li>打开网站链接验证是否发布成功。</li>
+      <li>上传一篇新笔记，测试自动更新是否正常。</li>
+    </ol>
+
+    <h2>三、新建 GitHub 仓库</h2>
+    <p>第一步是在 GitHub 上创建一个新的仓库，用来保存网站的所有文件。</p>
+    <ol>
+      <li>打开 GitHub 首页。</li>
+      <li>点击右上角的加号。</li>
+      <li>选择 New repository。</li>
+      <li>填写仓库名称，例如 learning-ai-product-manager。</li>
+      <li>选择 Public。</li>
+      <li>不要勾选 Add a README file。</li>
+      <li>点击 Create repository。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>仓库可以理解成一个网上文件夹。这个文件夹专门放网站文件。选择 Public 是为了让 GitHub Pages 可以公开访问网站。</p>
+    <p>不勾选 README，是为了让仓库保持空白，后面直接上传完整网站包，避免文件重复或冲突。</p>
+
+    <h2>四、上传网站文件</h2>
+    <p>仓库创建好后，需要把网站文件上传进去。</p>
+    <ol>
+      <li>点击 uploading an existing file。</li>
+      <li>解压网站项目压缩包。</li>
+      <li>把解压后的所有文件拖到上传页面。</li>
+      <li>确认文件列表里有 index.html、style.css、app.js、section.js 等核心文件。</li>
+      <li>点击 Commit changes。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>GitHub 不能直接运行压缩包，所以不能上传 zip 本身。必须先解压，再上传里面的文件。</p>
+    <p>index.html 是网站首页，style.css 决定网站好不好看，app.js 和 section.js 负责页面里的自动展示逻辑。</p>
+
+    <h2>五、检查是否缺少关键文件</h2>
+    <p>上传后，要检查仓库里是否有这些文件和文件夹：</p>
+    <ul>
+      <li>index.html：首页</li>
+      <li>style.css：样式</li>
+      <li>app.js：首页逻辑</li>
+      <li>section.js：板块列表页逻辑</li>
+      <li>data/content.json：内容目录数据</li>
+      <li>sections/：五个板块的列表页</li>
+      <li>notes/：每日学习笔记</li>
+      <li>english/：今日英语</li>
+      <li>projects/：工作项目</li>
+      <li>ai-practice/：AI实操</li>
+      <li>learning-camp/：Learning Camp</li>
+      <li>scripts/generate-content-list.js：自动生成内容目录的脚本</li>
+      <li>.github/workflows/generate-content-list.yml：GitHub Actions 自动化流程</li>
+    </ul>
+
+    <h3>小白解释</h3>
+    <p>如果没有 .github/workflows 文件，网站也能打开，但上传新文章后不会自动更新目录。</p>
+    <p>.github 这个文件夹有时候无法通过网页拖拽上传，需要手动创建。</p>
+
+    <h2>六、补充 GitHub Actions 文件</h2>
+    <p>如果仓库里没有 .github/workflows，就需要手动创建自动化文件。</p>
+    <ol>
+      <li>点击 Add file。</li>
+      <li>点击 Create new file。</li>
+      <li>文件名输入 .github/workflows/generate-content-list.yml。</li>
+      <li>粘贴自动化配置内容。</li>
+      <li>点击 Commit changes。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>GitHub Actions 就像一个自动小助手。每次我上传新的学习笔记、英语单词或项目内容，它会自动运行脚本，重新生成内容目录。</p>
+    <p>这个目录就是 data/content.json。网站列表页会读取它，所以内容才能自动出现。</p>
+
+    <h2>七、开启 GitHub Pages</h2>
+    <p>文件上传完成后，要开启 GitHub Pages，让仓库变成真正的网站。</p>
+    <ol>
+      <li>进入仓库页面。</li>
+      <li>点击 Settings。</li>
+      <li>左侧找到 Pages。</li>
+      <li>Source 选择 Deploy from a branch。</li>
+      <li>Branch 选择 main。</li>
+      <li>Folder 选择 /root。</li>
+      <li>点击 Save。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>GitHub 仓库只是存文件的地方。GitHub Pages 是把这些文件发布成网站的功能。</p>
+    <p>选择 main 和 /root，意思是：请 GitHub 从 main 分支的根目录读取网站首页。</p>
+
+    <h2>八、查看网站链接</h2>
+    <p>开启 Pages 后，GitHub 会生成一个网站链接。</p>
+    <p>如果仓库名是 learning-ai-product-manager，网站地址通常是：</p>
+    <p><strong>https://liu-wanli.github.io/learning-ai-product-manager/</strong></p>
+    <p>刚开启时可能会显示 404，通常等待 1 到 3 分钟，再刷新页面即可。</p>
+
+    <h3>小白解释</h3>
+    <p>404 不一定代表失败，很多时候只是网站还在发布中。等 GitHub 处理完，就能正常打开。</p>
+
+    <h2>九、测试自动更新</h2>
+    <p>网站能打开后，可以上传一篇新笔记测试自动更新。</p>
+    <ol>
+      <li>进入仓库里的 notes 文件夹。</li>
+      <li>点击 Add file。</li>
+      <li>上传新的 HTML 笔记，例如 day02.html。</li>
+      <li>点击 Commit changes。</li>
+      <li>进入 Actions 页面，等待流程变成绿色对勾。</li>
+      <li>刷新网站里的每日学习笔记列表页。</li>
+      <li>如果能看到 Day02，说明自动更新成功。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>上传 day02.html 后，Actions 会扫描 notes 文件夹，发现多了一篇文章，就会更新 data/content.json。</p>
+    <p>网站的列表页读取新的 data/content.json，就能显示这篇新笔记。</p>
+
+    <h2>十、常见问题</h2>
+    <h3>1. 为什么我看不到 .github 文件夹？</h3>
+    <p>.github 是以点开头的特殊文件夹，网页上传时有时不容易传上去。可以用 Create new file 的方式手动创建完整路径。</p>
+
+    <h3>2. 为什么网站打开是 404？</h3>
+    <p>可能是 Pages 还没发布完成，也可能是仓库没有 index.html。先等几分钟，再检查 Settings → Pages 是否设置正确。</p>
+
+    <h3>3. 为什么上传新笔记后列表没有更新？</h3>
+    <p>先看 Actions 是否变成绿色对勾。如果没有 Actions 文件，或者 Actions 失败，目录就不会自动更新。</p>
+
+    <h3>4. 我以后要改网站，应该改哪里？</h3>
+    <ul>
+      <li>改首页：修改 index.html。</li>
+      <li>改样式：修改 style.css。</li>
+      <li>改板块列表页：修改 sections 文件夹里的页面。</li>
+      <li>改自动更新逻辑：修改 scripts/generate-content-list.js。</li>
+      <li>新增内容：上传 HTML 到 notes、english、projects、ai-practice 或 learning-camp。</li>
+    </ul>
+
+    <h2>十一、今天的总结</h2>
+    <p>今天我完成了从新建仓库到发布网站的完整流程，也理解了 GitHub 仓库、GitHub Pages 和 GitHub Actions 的分工。</p>
+    <ul>
+      <li>GitHub 仓库负责保存网站文件。</li>
+      <li>GitHub Pages 负责把网站发布到互联网。</li>
+      <li>GitHub Actions 负责自动更新内容目录。</li>
+      <li>我以后只需要上传新内容，网站就可以持续成长。</li>
+    </ul>
+  </main>
+</body>
+</html>

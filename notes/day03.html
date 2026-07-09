@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day03｜新建GitHub仓库和上传网站文件操作笔记</title>
+  <meta name="description" content="记录新建GitHub仓库、上传网站文件、补充Actions、开启Pages和查看网站链接的具体操作。" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <a class="brand" href="../index.html">AI PM Learning</a>
+      <a class="back" href="../sections/notes.html">返回笔记列表</a>
+    </nav>
+  </header>
+
+  <main class="article">
+    <h1>Day03｜新建GitHub仓库和上传网站文件操作笔记</h1>
+    <p>这篇笔记记录我今天和 Codex 一起完成的新网站搭建流程。重点不是讲复杂原理，而是把每一步点哪里、选什么、注意什么写清楚，方便以后自己重复操作。</p>
+
+    <h2>一、我要做什么</h2>
+    <p>我要新建一个 GitHub 仓库，把 Codex 生成的网站文件上传进去，然后开启 GitHub Pages，让它变成一个可以访问的网站。</p>
+
+    <p>最终目标是：</p>
+    <ul>
+      <li>GitHub 仓库负责保存网站文件。</li>
+      <li>GitHub Pages 负责发布网站。</li>
+      <li>GitHub Actions 负责以后上传新内容时自动更新列表。</li>
+    </ul>
+
+    <h2>二、新建仓库的具体操作</h2>
+    <ol>
+      <li>打开 GitHub 网站。</li>
+      <li>点击右上角的加号按钮。</li>
+      <li>选择 <strong>New repository</strong>。</li>
+      <li>在 <strong>Repository name</strong> 里填写仓库名字。</li>
+      <li>选择 <strong>Public</strong>。</li>
+      <li>不要勾选 <strong>Add a README file</strong>。</li>
+      <li>点击绿色按钮 <strong>Create repository</strong>。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>仓库就像一个放在 GitHub 上的文件夹。新建仓库，就是给网站准备一个专门的存放位置。</p>
+    <p>选择 Public，是因为我要把网站公开发布出来。如果仓库是 Private，有些发布功能可能会受限制。</p>
+    <p>不勾选 Add a README file，是因为 Codex 给我的网站包里已经有 README.md。如果这里先让 GitHub 创建一个 README，后面上传文件时可能会重复或冲突。</p>
+
+    <h2>三、新仓库创建完成后看到的页面</h2>
+    <p>仓库新建成功后，GitHub 会显示一个空仓库页面。页面里会有一块蓝色区域，里面有这句话：</p>
+    <p><strong>Get started by creating a new file or uploading an existing file.</strong></p>
+
+    <p>这时候我不用管下面那些命令行代码，因为我现在是用网页上传文件，不需要命令行。</p>
+
+    <h3>我要点哪里</h3>
+    <p>点击蓝色区域里的：</p>
+    <p><strong>uploading an existing file</strong></p>
+
+    <h3>小白解释</h3>
+    <p>这一步的意思是：我要把电脑里的网站文件上传到 GitHub 仓库里。</p>
+
+    <h2>四、上传网站文件的具体操作</h2>
+    <ol>
+      <li>先找到 Codex 给我的网站压缩包。</li>
+      <li>先解压压缩包。</li>
+      <li>打开解压后的文件夹。</li>
+      <li>把里面的文件和文件夹拖到 GitHub 上传页面。</li>
+      <li>确认上传列表里出现了网站文件。</li>
+      <li>页面下方点击 <strong>Commit changes</strong>。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>不能直接上传 zip 压缩包，因为 GitHub Pages 需要读取真正的网站文件，比如 index.html、style.css，而不是读取压缩包。</p>
+    <p>Commit changes 可以理解成“确认保存这次上传”。点了以后，这些文件才真正进入仓库。</p>
+
+    <h2>五、上传后应该有哪些文件</h2>
+    <p>上传完成后，仓库里应该能看到这些核心文件和文件夹：</p>
+    <ul>
+      <li><strong>index.html</strong>：网站首页。</li>
+      <li><strong>style.css</strong>：网站样式。</li>
+      <li><strong>app.js</strong>：首页展示逻辑。</li>
+      <li><strong>section.js</strong>：板块列表页展示逻辑。</li>
+      <li><strong>data/content.json</strong>：网站内容目录。</li>
+      <li><strong>sections/</strong>：每日学习笔记、AI实操、Learning Camp、工作项目、今日英语这几个板块的列表页。</li>
+      <li><strong>notes/</strong>：每日学习笔记内容。</li>
+      <li><strong>english/</strong>：英语词汇内容。</li>
+      <li><strong>projects/</strong>：工作项目内容。</li>
+      <li><strong>ai-practice/</strong>：AI实操内容。</li>
+      <li><strong>learning-camp/</strong>：Learning Camp 内容。</li>
+      <li><strong>scripts/generate-content-list.js</strong>：自动生成内容目录的脚本。</li>
+    </ul>
+
+    <h2>六、最容易漏掉的文件：.github</h2>
+    <p>今天操作时发现，网页上传文件时，经常会漏掉 <strong>.github</strong> 文件夹。</p>
+    <p>如果仓库里没有这个文件：</p>
+    <p><strong>.github/workflows/generate-content-list.yml</strong></p>
+    <p>那么网站虽然可以打开，但以后上传新笔记时，列表不会自动更新。</p>
+
+    <h3>怎么补 .github 文件</h3>
+    <ol>
+      <li>回到仓库首页。</li>
+      <li>点击 <strong>Add file</strong>。</li>
+      <li>点击 <strong>Create new file</strong>。</li>
+      <li>文件名输入：<strong>.github/workflows/generate-content-list.yml</strong></li>
+      <li>把 Codex 给的 Actions 内容粘进去。</li>
+      <li>点击 <strong>Commit changes</strong>。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>GitHub 会根据文件名里的斜杠，自动帮我创建文件夹。所以我不用先创建 .github 文件夹，只要直接输入完整路径就可以。</p>
+    <p>Actions 文件就像一个自动任务说明书。它告诉 GitHub：当我上传新内容时，要自动运行脚本，更新网站目录。</p>
+
+    <h2>七、开启 GitHub Pages 的具体操作</h2>
+    <ol>
+      <li>进入仓库页面。</li>
+      <li>点击顶部菜单里的 <strong>Settings</strong>。</li>
+      <li>在左边找到 <strong>Pages</strong>。</li>
+      <li>Source 选择 <strong>Deploy from a branch</strong>。</li>
+      <li>Branch 选择 <strong>main</strong>。</li>
+      <li>Folder 选择 <strong>/root</strong>。</li>
+      <li>点击 <strong>Save</strong>。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>GitHub Pages 是 GitHub 提供的免费网站发布功能。</p>
+    <p>选择 main 和 /root 的意思是：让 GitHub 从 main 分支的最外层目录里找 index.html，然后把它发布成网站。</p>
+
+    <h2>八、去哪里看网站链接</h2>
+    <p>开启 GitHub Pages 后，仍然在 <strong>Settings → Pages</strong> 页面查看网站链接。</p>
+    <p>如果仓库名字是 learning-ai-product-manager，那么网站地址通常是：</p>
+    <p><strong>https://liu-wanli.github.io/learning-ai-product-manager/</strong></p>
+
+    <h3>小白解释</h3>
+    <p>链接格式通常是：</p>
+    <p><strong>https://用户名.github.io/仓库名/</strong></p>
+    <p>如果刚打开是 404，不一定是失败，可能是 GitHub 还在发布。等 1 到 3 分钟再刷新。</p>
+
+    <h2>九、测试自动更新的具体操作</h2>
+    <p>网站能打开后，我可以上传一篇新笔记，测试列表是否会自动更新。</p>
+
+    <ol>
+      <li>进入仓库里的 <strong>notes</strong> 文件夹。</li>
+      <li>点击 <strong>Add file</strong>。</li>
+      <li>选择 <strong>Upload files</strong>。</li>
+      <li>上传新的笔记文件，例如 <strong>day03.html</strong>。</li>
+      <li>点击 <strong>Commit changes</strong>。</li>
+      <li>点击仓库顶部的 <strong>Actions</strong>。</li>
+      <li>等待最新流程变成绿色对勾。</li>
+      <li>刷新网站里的每日学习笔记列表页。</li>
+    </ol>
+
+    <h3>小白解释</h3>
+    <p>绿色对勾表示 GitHub 自动任务运行成功。</p>
+    <p>如果列表页出现了新上传的笔记，就说明自动更新成功。</p>
+
+    <h2>十、今天记住的几个关键词</h2>
+    <ul>
+      <li><strong>Repository</strong>：仓库，保存网站文件的地方。</li>
+      <li><strong>Commit changes</strong>：提交修改，把上传或编辑的内容保存到仓库。</li>
+      <li><strong>GitHub Pages</strong>：把仓库里的网页文件发布成网站。</li>
+      <li><strong>GitHub Actions</strong>：自动执行任务，比如自动更新内容目录。</li>
+      <li><strong>index.html</strong>：网站首页。</li>
+      <li><strong>style.css</strong>：网站样式。</li>
+      <li><strong>data/content.json</strong>：网站各板块的内容目录。</li>
+    </ul>
+
+    <h2>十一、以后我更新网站时怎么做</h2>
+    <ul>
+      <li>新增学习笔记：上传到 notes 文件夹。</li>
+      <li>新增英语单词：上传到 english 文件夹。</li>
+      <li>新增工作项目：上传到 projects 文件夹。</li>
+      <li>新增 AI 实操：上传到 ai-practice 文件夹。</li>
+      <li>新增 Learning Camp 内容：上传到 learning-camp 文件夹。</li>
+    </ul>
+
+    <p>上传完成后，去 Actions 看绿色对勾，再刷新网站。</p>
+
+    <h2>十二、今日总结</h2>
+    <p>今天我学会了从零新建 GitHub 仓库、上传网站文件、补充自动化文件、开启 GitHub Pages，并知道了在哪里查看网站链接。</p>
+    <p>这套流程以后可以重复使用：先建仓库，再上传文件，再开启 Pages，最后用 Actions 测试自动更新。</p>
+  </main>
+</body>
+</html>
