@@ -19,7 +19,7 @@ async function loadSectionContent() {
       <a class="content-card reveal" style="--delay: ${index * 55}ms" href="../${item.url}">
         <div class="content-topline">
           <span class="date">${item.date || "未设置日期"}</span>
-          <span class="open-indicator">Open</span>
+          <span class="open-indicator">进入</span>
         </div>
         <h2>${item.title}</h2>
         <p>${item.description || "点击查看正文。"}</p>

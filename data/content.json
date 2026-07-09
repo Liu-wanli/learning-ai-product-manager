@@ -5,56 +5,22 @@
       "description": "记录网站搭建的第一步：仓库、首页和学习入口。",
       "date": "Day01",
       "url": "notes/day01.html"
-    },
-    {
-      "title": "Day02｜新建GitHub仓库并发布个人网站完整流程",
-      "description": "从新建仓库、上传网站文件、开启GitHub Pages，到测试自动更新的完整步骤。",
-      "date": "Day02",
-      "url": "notes/day02.html"
-    },
-    {
-      "title": "Day03｜新建GitHub仓库和上传网站文件操作笔记",
-      "description": "记录新建GitHub仓库、上传网站文件、补充Actions、开启Pages和查看网站链接的具体操作。",
-      "date": "Day03",
-      "url": "notes/day03.html"
-    },
-    {
-      "title": "100天｜AI研学产品经理每日学习详细计划",
-      "description": "精确到每天的AI研学产品经理100天学习计划，包含学习重点、练习任务和每日产出。",
-      "date": "",
-      "url": "notes/ai-pm-100-day-detailed-roadmap.html"
     }
   ],
   "ai-practice": [
     {
       "title": "AI工具入口与提示词清单",
       "description": "保存常用AI工具和适合产品经理的提示词。",
-      "date": "",
+      "date": "工具库",
       "url": "ai-practice/toolbox.html"
-    }
-  ],
-  "learning-camp": [
-    {
-      "title": "Learning Camp｜学习路径总览",
-      "description": "整理训练营课程、任务和阶段目标。",
-      "date": "",
-      "url": "learning-camp/camp01.html"
     }
   ],
   "projects": [
     {
       "title": "项目记录｜AI产品经理学习中心",
       "description": "记录这个网站从想法到上线的过程。",
-      "date": "",
+      "date": "Project01",
       "url": "projects/learning-site.html"
-    }
-  ],
-  "english": [
-    {
-      "title": "Day01｜GitHub常用英语",
-      "description": "repository、commit、branch、deploy 等基础词。",
-      "date": "Day01",
-      "url": "english/day01.html"
     }
   ]
 }

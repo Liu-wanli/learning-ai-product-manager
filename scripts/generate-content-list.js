@@ -7,9 +7,7 @@ const outputFile = path.join(rootDir, "data", "content.json");
 const sections = [
   { id: "notes", dir: "notes" },
   { id: "ai-practice", dir: "ai-practice" },
-  { id: "learning-camp", dir: "learning-camp" },
-  { id: "projects", dir: "projects" },
-  { id: "english", dir: "english" }
+  { id: "projects", dir: "projects" }
 ];
 
 function cleanText(value) {
