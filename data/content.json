@@ -11,7 +11,7 @@
     {
       "title": "AI工具入口与提示词清单",
       "description": "保存常用AI工具和适合产品经理的提示词。",
-      "date": "工具库",
+      "date": "",
       "url": "ai-practice/toolbox.html"
     }
   ],
@@ -19,7 +19,7 @@
     {
       "title": "Learning Camp｜学习路径总览",
       "description": "整理训练营课程、任务和阶段目标。",
-      "date": "Camp01",
+      "date": "",
       "url": "learning-camp/camp01.html"
     }
   ],
@@ -27,7 +27,7 @@
     {
       "title": "项目记录｜AI产品经理学习中心",
       "description": "记录这个网站从想法到上线的过程。",
-      "date": "Project01",
+      "date": "",
       "url": "projects/learning-site.html"
     }
   ],
