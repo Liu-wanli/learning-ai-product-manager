@@ -5,6 +5,18 @@
       "description": "记录网站搭建的第一步：仓库、首页和学习入口。",
       "date": "Day01",
       "url": "notes/day01.html"
+    },
+    {
+      "title": "Day02｜新建GitHub仓库并发布个人网站完整流程",
+      "description": "从新建仓库、上传网站文件、开启GitHub Pages，到测试自动更新的完整步骤。",
+      "date": "Day02",
+      "url": "notes/day02.html"
+    },
+    {
+      "title": "Day03｜新建GitHub仓库和上传网站文件操作笔记",
+      "description": "记录新建GitHub仓库、上传网站文件、补充Actions、开启Pages和查看网站链接的具体操作。",
+      "date": "Day03",
+      "url": "notes/day03.html"
     }
   ],
   "ai-practice": [
