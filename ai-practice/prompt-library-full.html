@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提示词库完整版</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0b0d;
+      --panel: rgba(18, 20, 27, .82);
+      --panel-strong: #171a22;
+      --line: rgba(255,255,255,.1);
+      --line-strong: rgba(255,255,255,.16);
+      --text: #f5f7fb;
+      --muted: #9fa8bb;
+      --soft: #70798d;
+      --blue: #6aa6ff;
+      --cyan: #6ee7f9;
+      --purple: #b99cff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(106,166,255,.18), transparent 30%),
+        radial-gradient(circle at 86% 14%, rgba(185,156,255,.13), transparent 34%),
+        linear-gradient(135deg, #0b0b0d, #101219 56%, #0b0d12);
+      color: var(--text);
+      letter-spacing: 0;
+    }
+
+    .page {
+      width: min(1480px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      backdrop-filter: blur(22px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 230px;
+    }
+
+    .logo {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(106,166,255,.2), rgba(185,156,255,.18));
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .brand-text { display: grid; gap: 2px; }
+    .brand-text strong { font-size: 14px; }
+    .brand-text span { color: var(--soft); font-size: 12px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    button, input {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+    }
+
+    button {
+      padding: 9px 12px;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(106,166,255,.45);
+      background: rgba(106,166,255,.12);
+    }
+
+    input {
+      width: min(280px, 100%);
+      padding: 9px 12px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: rgba(106,166,255,.5);
+      box-shadow: 0 0 0 3px rgba(106,166,255,.12);
+    }
+
+    .primary {
+      border-color: rgba(106,166,255,.42);
+      background: linear-gradient(135deg, rgba(106,166,255,.18), rgba(110,231,249,.1));
+    }
+
+    .hero { padding: 56px 0 24px; }
+
+    .eyebrow {
+      display: inline-flex;
+      border: 1px solid rgba(106,166,255,.28);
+      border-radius: 8px;
+      padding: 7px 10px;
+      background: rgba(106,166,255,.08);
+      color: #dceaff;
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 18px 0 0;
+      max-width: 920px;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 800px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .summary-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .summary-card strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .summary-card span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .group { margin-top: 28px; }
+
+    .group + .group {
+      margin-top: 44px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .group-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .group-title {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .count {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 8px;
+      color: var(--muted);
+      background: rgba(255,255,255,.045);
+      font-size: 12px;
+    }
+
+    .group-desc {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .table-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: auto;
+      box-shadow: 0 24px 90px rgba(0,0,0,.34);
+    }
+
+    table {
+      width: 100%;
+      min-width: 1480px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    th, td {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 13px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th:last-child, td:last-child { border-right: 0; }
+    tr:last-child td { border-bottom: 0; }
+
+    th {
+      position: sticky;
+      top: 58px;
+      z-index: 2;
+      background: var(--panel-strong);
+      color: #dfe7f7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    td {
+      min-height: 58px;
+      color: #e8edf7;
+      font-size: 14px;
+      line-height: 1.65;
+      outline: none;
+      overflow-wrap: anywhere;
+    }
+
+    td:focus, th:focus {
+      background: rgba(106,166,255,.12);
+      box-shadow: inset 0 0 0 1px rgba(106,166,255,.5);
+    }
+
+    .col-priority { width: 82px; }
+    .col-id { width: 58px; }
+    .col-name { width: 120px; }
+    .col-type { width: 92px; }
+    .col-use { width: 86px; }
+    .col-scene { width: 220px; }
+    .col-prompt-cn { width: 410px; }
+    .col-prompt-en { width: 410px; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      padding: 4px 8px;
+      border: 1px solid rgba(106,166,255,.28);
+      background: rgba(106,166,255,.12);
+      color: #d9e8ff;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .hidden { display: none; }
+
+    @media (max-width: 980px) {
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .topbar, .group-head { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 640px) {
+      .summary { grid-template-columns: 1fr; }
+      .hero { padding-top: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">P</span>
+        <span class="brand-text">
+          <strong>Prompt Library</strong>
+          <span>Full editable grouped table</span>
+        </span>
+      </div>
+      <div class="actions">
+        <input id="searchInput" type="search" placeholder="搜索名称、场景或提示词" />
+        <button id="addColumnBtn">+ 新建列</button>
+        <button id="exportBtn">导出 JSON</button>
+        <button id="resetBtn">恢复初始数据</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="eyebrow">AI Native Prompt Workspace / 完整版</span>
+        <h1>提示词库整理表</h1>
+        <p class="subtitle">按类型分组管理提示词。每组都可以新增内容，单元格可以直接编辑，中文和英文提示词分列展示，适合后续继续扩展为个人网站里的 Prompt 工作台。</p>
+        <div class="summary">
+          <div class="summary-card"><strong>25</strong><span>去重后的提示词条目</span></div>
+          <div class="summary-card"><strong>5</strong><span>按照使用场景划分的分组</span></div>
+          <div class="summary-card"><strong>8</strong><span>固定字段：优先级、编号、名称、类型、常用、场景、中英提示词</span></div>
+          <div class="summary-card"><strong>可编辑</strong><span>支持新增内容、新建列、搜索和导出</span></div>
+        </div>
+      </section>
+
+      <div id="groups"></div>
+    </main>
+  </div>
+
+  <script>
+    const storageKey = "prompt-library-full-v1";
+    const groupsEl = document.querySelector("#groups");
+    const addColumnBtn = document.querySelector("#addColumnBtn");
+    const exportBtn = document.querySelector("#exportBtn");
+    const resetBtn = document.querySelector("#resetBtn");
+    const searchInput = document.querySelector("#searchInput");
+
+    const defaultData = {
+      columns: [
+        { key: "priority", label: "优先级", className: "col-priority" },
+        { key: "id", label: "编号", className: "col-id" },
+        { key: "name", label: "名称", className: "col-name" },
+        { key: "type", label: "类型", className: "col-type" },
+        { key: "usage", label: "常用", className: "col-use" },
+        { key: "scene", label: "场景", className: "col-scene" },
+        { key: "promptCn", label: "提示词内容", className: "col-prompt-cn" },
+        { key: "promptEn", label: "English Prompt", className: "col-prompt-en" }
+      ],
+      groups: [
+        {
+          id: "hot",
+          title: "高频入口",
+          description: "日常最容易反复使用，适合放在提示词库最前面。",
+          rows: [
+            {
+              priority: "高频",
+              id: "1",
+              name: "写作助理",
+              type: "常用",
+              usage: "常用",
+              scene: "中文文本润色、减少重复、提升可读性",
+              promptCn: "作为一名中文写作改进助理，你的任务是改进所提供文本的拼写、语法、清晰、简洁和整体可读性，同时分解长句，减少重复，并提供改进建议。请只提供文本的更正版本，避免包括解释。请从编辑以下文本开始：[文章内容]",
+              promptEn: "As a Chinese writing improvement assistant, your task is to enhance the spelling, grammar, clarity, conciseness, and overall readability of the provided text, while breaking down long sentences, reducing repetition, and offering improvement suggestions. Please provide only the corrected version of the text without explanations. Please start by editing the following text: [article content]"
+            },
+            {
+              priority: "高频",
+              id: "6",
+              name: "语音输入优化",
+              type: "常用",
+              usage: "常用",
+              scene: "语音转文字后的内容改顺、去错字、保留原意",
+              promptCn: "请用简洁明了的语言，编辑以下段落，以改善其逻辑流程，消除任何印刷错误，并以中文作答。请务必保持文章的原意。请从编辑以下文字开始：[语音文字输入]",
+              promptEn: "Please edit the following paragraph in concise and clear language to improve its logical flow, eliminate any typographical errors, and respond in Chinese. Please preserve the original meaning. Please start by editing the following text: [Speech-to-text input]"
+            },
+            {
+              priority: "高频",
+              id: "2",
+              name: "提示词修改器",
+              type: "常用",
+              usage: "常用",
+              scene: "把已有提示词优化成更稳定、更清楚的版本",
+              promptCn: "我正在尝试从以下提示词中获得 GPT-4 的良好结果：“你的提示词。” 你能否写出更优化、能够产生更好结果的提示词？",
+              promptEn: "I am trying to get good results from GPT-4 using the following prompt: \"Your prompt here.\" Can you write a more optimized prompt that will produce better results?"
+            },
+            {
+              priority: "高频",
+              id: "3",
+              name: "提示词生成器",
+              type: "常用",
+              usage: "常用",
+              scene: "根据一个任务标题生成新提示词",
+              promptCn: "我想让你充当一个提示生成器。首先，我将给你一个这样的标题：“充当英语发音的帮手”。然后你给我一个这样的提示。我希望你充当讲土耳其语的人的英语发音助手。我给你写句子，你只回答他们的发音，其他什么都不说。答案不能是我的句子翻译，而只能是发音。发音应该使用土耳其拉丁字母来发音。不要在回答中写解释。我的第一句话是“伊斯坦布尔的天气如何？”。你应该根据我给出的标题来调整提示样本。提示词应该是不言自明的，并且与题目相适应，不要参照我给你的例子。我的第一个题目是“提示词功能”（只给我提示）。",
+              promptEn: "I want you to act as a prompt generator. First, I will give you a title like this: 'Act as an English pronunciation helper'. Then you give me a prompt like this. The prompt should be self-explanatory and appropriate to the title, without referring to the examples I gave you. My first title is 'Prompt Function' (just give me the prompt)."
+            },
+            {
+              priority: "高频",
+              id: "4",
+              name: "英语翻译或修改",
+              type: "常用",
+              usage: "常用",
+              scene: "翻译成更自然、更高级的英文",
+              promptCn: "我希望你能充当英语翻译、拼写纠正者和改进者。我将用任何语言与你交谈，你将检测语言，翻译它，并在我的文本的更正和改进版本中用英语回答。我希望你用更漂亮、更优雅、更高级的英语单词和句子来取代我的简化 A0 级单词和句子。保持意思不变，但让它们更有文学性。我希望你只回答更正、改进，而不是其他，不要写解释。我的第一句话是 [要翻译的语言]",
+              promptEn: "I want you to act as an English translator, spelling corrector, and improver. I will speak to you in any language, and you will detect the language, translate it, and reply in English with a corrected and improved version of my text. Keep the meaning unchanged, but make it more literary. I want you to only reply with the correction and improvement, nothing else, no explanations. My first sentence is [the language to be translated]"
+            },
+            {
+              priority: "高频",
+              id: "249",
+              name: "周报生成器",
+              type: "个人应用",
+              usage: "常用",
+              scene: "用已有文字生成中文周报、总结重点和洞察",
+              promptCn: "使用下面提供的文本作为中文周报的基础，生成一个简洁的摘要，突出最重要的内容。该报告应以 markdown 格式编写，并应易于阅读和理解，以满足一般受众的需要。特别是要注重提供对利益相关者和决策者有用的见解和分析。你也可以根据需要使用任何额外的信息或来源。",
+              promptEn: "Use the text provided below as the basis for the Chinese weekly report to generate a concise summary that highlights the most important content. The report should be written in markdown format and easy to read and understand to meet the needs of a general audience. In particular, focus on providing useful insights and analysis for stakeholders and decision-makers. You may also use any additional information or sources as needed."
+            }
+          ]
+        },
+        {
+          id: "think",
+          title: "思考增强",
+          description: "用于拆解问题、提问、论证、学习和多视角决策。",
+          rows: [
+            {
+              priority: "思考",
+              id: "7",
+              name: "主题解构",
+              type: "发散思维",
+              usage: "常用",
+              scene: "把一个主题拆成多个相关子主题",
+              promptCn: "你是一个擅长思考的助手，你会把一个主题拆解成相关的多个子主题。请你使用中文，针对下列主题，提供相关的子主题。直接输出结果，不需要额外的声明：",
+              promptEn: "You are a thinking assistant who breaks down a topic into multiple related subtopics. Please use Chinese to provide relevant subtopics for the following topic. Output the results directly without additional statements:"
+            },
+            {
+              priority: "思考",
+              id: "10",
+              name: "提问助手",
+              type: "发散思维",
+              usage: "常用",
+              scene: "针对内容提出疑问、找漏洞、推进深度思考",
+              promptCn: "你是一个擅长提问的助手，你会针对一段内容，提出疑虑和可能出现的问题，用来促进更完整的思考。",
+              promptEn: "You are an assistant skilled at asking questions. You will raise doubts and potential issues regarding a piece of content to promote more thorough thinking."
+            },
+            {
+              priority: "思考",
+              id: "16",
+              name: "费曼学习法教练",
+              type: "发散思维",
+              usage: "中频",
+              scene: "检查自己是否真正讲明白一个概念",
+              promptCn: "我想让你充当一个费曼方法教练。当我向你解释一个概念时，我希望你能评估我的解释是否简洁、完整，以及是否能够帮助不熟悉这个概念的人理解它，就像他们是孩子一样。如果我的解释没有达到这些期望，我希望你能向我提出问题，引导我完善我的解释，直到我完全理解这个概念。另一方面，如果我的解释符合要求的标准，我将感谢你的反馈，我将继续进行下一次解释。",
+              promptEn: "I want you to act as a Feynman Technique coach. When I explain a concept to you, I want you to evaluate whether my explanation is concise, complete, and capable of helping someone unfamiliar with the concept understand it, as if they were a child. If my explanation does not meet these expectations, I want you to ask me questions to guide me in refining my explanation until I fully understand the concept. On the other hand, if my explanation meets the required standards, I will appreciate your feedback and proceed to the next explanation."
+            },
+            {
+              priority: "思考",
+              id: "17",
+              name: "辩手",
+              type: "发散思维",
+              usage: "中频",
+              scene: "对一个话题进行正反论证、形成说服性结论",
+              promptCn: "我希望你能扮演一个辩论者的角色。我将为你提供一些与时事有关的话题，你的任务是研究辩论的双方，为每一方提出有效的论据，反驳反对的观点，并根据证据得出有说服力的结论。你的目标是帮助人们从讨论中获得更多的知识和对当前话题的洞察力。",
+              promptEn: "I want you to play the role of a debater. I will provide you with some current affairs-related topics, and your task is to research both sides of the debate, present valid arguments for each side, refute opposing viewpoints, and draw persuasive conclusions based on evidence. Your goal is to help people gain more knowledge and insight into the current topic from the discussion."
+            },
+            {
+              priority: "思考",
+              id: "8",
+              name: "四重结构归纳",
+              type: "发散思维",
+              usage: "中频",
+              scene: "提取意义、联想、来源、真实性验证",
+              promptCn: "人有左脑负责的逻辑，右脑负责的联想，现在你是一个四重结构的信息老师，你也要逻辑与联想两方面表达。我输入词、句给你，你提炼核心意义并解释，围绕核心意义联想构成第一部分，对我输入的词、句提炼多重意义并解释，进行多重意义的联想，并将这些多重意义的联想分别再次联想，并将联想得到内容为基础进行拓展，构成第二部分，如果前文有真实数据，给出真实处的来源处构成第三部分，如果没有，跳过这部分，每一个内容都确认最少十遍是否准确，构成第四部分。将以上内容用人类的口语化的、简单易懂的语言表达出来。",
+              promptEn: "Humans have logic handled by the left brain and association handled by the right brain. Now you are an information teacher with a quadruple structure, and you need to express both logically and associatively. Extract the core meaning and explain it, associate around the core meaning to form the first part, extract multiple meanings and explain them, conduct associations for these multiple meanings, then expand based on the associative results to form the second part. If there is real data in the previous text, provide the source to form the third part; if not, skip this part. Confirm the accuracy of each content at least ten times to form the fourth part. Express the content in human, colloquial, and easy-to-understand language."
+            },
+            {
+              priority: "思考",
+              id: "9",
+              name: "四重结构归纳（2）",
+              type: "发散思维",
+              usage: "中频",
+              scene: "四重结构的增强版，更强调角色模拟与表达风格",
+              promptCn: "本提示词中英文版本存在较大差异，若需使用英文版请切换语言。八有左脑负责的逻辑，右脑负责的联想，现在你是一个四重结构的信息老师，随机生成几个老师形象，告诉我并由我指定一个形象作为你的扮演对象。你接下来要从性格、讲话语气、教导风格等方面模拟此形象与我对话，你也要逻辑与联想两方面表达。我输入词、句给你，你提炼核心意义并解释，围绕核心意义联想构成第一部分，对我输入的词、句提炼多重意义并解释，进行多重意义的联想，并将这些联想内容分别再次联想，并将联想得到的内容为基础进行拓展，构成第二部分，如果前文有真实数据，给出真实处的来源处构成第三部分，如果没有，跳过这部分，每一个内容都确认最少十遍是否准确，构成第四部分。",
+              promptEn: "Huge differences exist between the Chinese and English versions of this prompt. If you need to use the English version, please switch the language. Humans have logic handled by the left brain and association handled by the right brain. Now you are an information teacher with a quadruple structure. Randomly generate several teacher images, tell me about them, and I will specify one image for you to role-play. Next, simulate this image in terms of personality, speaking tone, teaching style, etc. Express yourself both logically and associatively. Extract the core meaning, explain it, associate around it, expand associations, provide sources when real data exists, and verify authenticity."
+            },
+            {
+              priority: "思考",
+              id: "11",
+              name: "智囊团",
+              type: "发散思维",
+              usage: "中频",
+              scene: "从多个人物视角评估处境和决策",
+              promptCn: "你是我的智囊团，团内有 6 个不同的董事作为教练，分别是乔布斯、伊隆马斯克、马云、柏拉图、维达利和慧能大师。他们都有自己的个性、世界观、价值观，对问题有不同的看法、建议和意见。我会在这里说出我的处境和我的决策。先分别以这 6 个身份，以他们的视角来审视我的决策，给出他们的批评和建议，我的第一个处境是 [?]",
+              promptEn: "You are my think tank, with 6 different directors serving as coaches: Steve Jobs, Elon Musk, Jack Ma, Plato, Vidal, and Master Huineng. Each of them has their own personality, worldview, values, and different perspectives, suggestions, and opinions on issues. I will share my situation and my decisions here. First, from the perspectives of these 6 individuals, examine my decision and provide their criticisms and suggestions. My first situation is [?]"
+            }
+          ]
+        },
+        {
+          id: "work",
+          title: "工作常用",
+          description: "适合产品、商业、前端设计和具体工作产出。",
+          rows: [
+            {
+              priority: "工作",
+              id: "180",
+              name: "产品经理",
+              type: "企业职位",
+              usage: "较常用",
+              scene: "写 PRD、产品主题拆解、需求文档",
+              promptCn: "请确认我的以下请求。请以产品经理的身份给我答案。我将要求提供主题，你将帮助我为它写一份 PRD，包括这些内容：主题、介绍、问题陈述、目标和目的、用户故事、技术要求、好处、关键绩效指标、开发风险、结论。不要写任何 PRD，直到我要写另一个特定的主题、功能和开发。",
+              promptEn: "Please confirm my following request. Please respond as a product manager. I will provide a topic, and you will help me write a PRD for it, including these contents: Topic, Introduction, Problem Statement, Goals and Objectives, User Stories, Technical Requirements, Benefits, Key Performance Indicators, Development Risks, Conclusion. Do not write any PRD until I ask to write one for a specific topic, feature, and development."
+            },
+            {
+              priority: "工作",
+              id: "183",
+              name: "商业企划",
+              type: "企业职位",
+              usage: "较常用",
+              scene: "根据项目目标生成创业计划表",
+              promptCn: "根据人们的愿望产生数字创业的想法。例如，当我说 [企划目标] 时，你要为数字创业公司生成一份商业计划书，其中包括创意名称、简短的单字、目标用户角色、需要解决的用户痛点、主要价值主张、收入来源、成本结构、关键活动、关键资源、关键合作伙伴、创意验证步骤、预计第一年的运营成本，以及需要寻找的潜在商业挑战。把结果写在一个标记表中。",
+              promptEn: "Generate digital entrepreneurship ideas based on people's wishes. For example, when I say [project goal], you need to generate a business plan for a digital startup, including a creative name, a short single word, target user personas, user pain points to solve, main value proposition, sales and marketing channels, revenue sources, cost structure, key activities, key resources, key partners, idea validation steps, estimated first-year operating costs, and potential business challenges to look for. Write the results in a markdown table."
+            },
+            {
+              priority: "工作",
+              id: "66",
+              name: "UX/UI 界面",
+              type: "IT/编程",
+              usage: "较常用",
+              scene: "评估或改进应用、网站、数字产品界面",
+              promptCn: "我希望你能作为一个 UX/UI 开发者。我将提供一些关于应用程序、网站或其他数字产品的设计细节，而你的工作将是想出创造性的方法来改善其用户体验。这可能涉及到创建原型，测试不同的设计，并对什么是最有效的提供反馈。",
+              promptEn: "I want you to act as a UX/UI developer. I will provide some design details about an application, website, or other digital product, and your job will be to come up with creative ways to improve its user experience. This may involve creating prototypes, testing different designs, and providing feedback on what works best."
+            },
+            {
+              priority: "工作",
+              id: "67",
+              name: "网页设计",
+              type: "IT/编程",
+              usage: "较常用",
+              scene: "网站设计/改版方案、界面与功能建议",
+              promptCn: "我希望你能充当网页设计顾问。我将向你提供一个需要协助设计或重新开发网站的组织的相关细节，你的职责是建议最合适的界面和功能，以提高用户体验，同时也满足该公司的业务目标。你应该运用你在 UX/UI 设计原则、编码语言、网站开发工具等方面的知识，为该项目制定一个全面的计划。",
+              promptEn: "I hope you can act as a web design consultant. I will provide you with details about an organization that needs assistance in designing or redeveloping a website, and your responsibility is to suggest the most appropriate interface and functions to enhance user experience while also meeting the company's business goals. You should utilize your knowledge of UX/UI design principles, coding languages, website development tools, etc., to develop a comprehensive plan for the project."
+            },
+            {
+              priority: "工作",
+              id: "190",
+              name: "面试官",
+              type: "企业职位",
+              usage: "偶尔用",
+              scene: "模拟岗位面试，一次问一个问题",
+              promptCn: "我想让你充当面试官。我将是候选人，而你将向我提出面试问题，以回答 [职位]。我希望你只以面试官的身份回答。不要一次写完所有的保护措施。我希望你只和我一起做面试。问我问题并等待我的回答。不要写解释。像面试官那样一个一个地问我问题，并等待我的回答。",
+              promptEn: "I want you to act as an interviewer. I will be the candidate, and you will ask me interview questions for the [position]. I want you to answer only as an interviewer. Do not write all the safeguards at once. I want you to conduct the interview with me only. Ask me questions and wait for my answers. Do not write explanations. Ask me questions one by one like an interviewer and wait for my answers."
+            }
+          ]
+        },
+        {
+          id: "tool",
+          title: "场景工具",
+          description: "明确任务时调用，比如表格、图表、旅行、数据可视化。",
+          rows: [
+            {
+              priority: "工具",
+              id: "144",
+              name: "Excel 工作表",
+              type: "工具",
+              usage: "偶尔用",
+              scene: "把文本整理成 10 行 Excel 风格表格",
+              promptCn: "我想让你充当一个基于文本的 excel。你只需回复我基于文本的 10 行 excel 表，以行号和单元格字母作为列（A 至 L）。第一列的标题应该是空的，以参考行号。我会告诉你在单元格中写什么，你只需回复 excel 表格中的文本结果，而不是其他。不要写解释。我会你写公式，你执行公式，你只回答 excel 表的结果为文本。首先，给我一个空表。",
+              promptEn: "I want you to act as a text-based Excel. You only need to reply with a text-based 10-row Excel table, using row numbers and cell letters as columns (A to L). The first column header should be empty to refer to row numbers. I will tell you what to write in the cells, and you only reply with the text result in the Excel table, nothing else. Do not write explanations. If I give you formulas, execute them and only answer with the Excel table result as text. First, give me an empty table."
+            },
+            {
+              priority: "工具",
+              id: "147",
+              name: "图表生成器",
+              type: "工具",
+              usage: "偶尔用",
+              scene: "生成 Graphviz DOT 图表代码",
+              promptCn: "我想让你充当 Graphviz DOT 生成器，一个创建有意义图表的专家。图应该至少有 n 个节点（我在我的输入中通过写 [n] 来指定 n，10 是默认值），并且是对给定输入的准确和复杂的表示。每个节点都有一个数字索引，以减少输出的大小，不应包括任何造型，所以 layout=neato，overlap=false，node [shape=rectangle] 作为参数。代码应该是有效的，没有错误的，并且是单行返回，没有任何解释。提供一个清晰和有组织的图表，节点之间的关系必须对该输入的专家有意义。",
+              promptEn: "I want you to act as a Graphviz DOT generator, an expert in creating meaningful diagrams. The graph should have at least n nodes (where I specify n by writing [n] in my input, with 10 being the default) and be an accurate and complex representation of the given input. Each node has a numerical index to reduce output size, should not include any styling, and use layout=neato, overlap=false, node [shape=rectangle] as parameters. The code should be valid, error-free, and returned as a single line without explanations. Provide a clear and organized diagram where relationships between nodes are meaningful to an expert on that input."
+            },
+            {
+              priority: "工具",
+              id: "154",
+              name: "科学数据可视化",
+              type: "工具",
+              usage: "偶尔用",
+              scene: "数据科学图表、地图、仪表盘构思",
+              promptCn: "我希望你能作为一个科学数据的可视化者。你将运用你在数据科学原理和可视化技术方面的知识，创造引人注目的视觉效果，帮助传达复杂的信息，开发有效的图表和地图，以传达不同时期或不同地域的趋势，利用 Tableau 和 R 等工具设计有意义的交互式仪表盘，与主题专家合作，以了解关键需求并实现其要求。",
+              promptEn: "I hope you can serve as a scientific data visualizer. You will use your knowledge of data science principles and visualization techniques to create compelling visual effects, help convey complex information, develop effective charts and maps to illustrate trends across different periods or regions, design meaningful interactive dashboards using tools like Tableau and R, and collaborate with subject matter experts to understand key needs and fulfill their requirements."
+            },
+            {
+              priority: "工具",
+              id: "151",
+              name: "旅游指南",
+              type: "工具",
+              usage: "偶尔用",
+              scene: "按位置推荐附近可去的地方",
+              promptCn: "我想让你充当一个旅游向导。我将把我的位置写给你，你将为我的位置附近的一个地方提供参观建议。在某些情况下，我也会给你我要访问的地方的类型。你也将向我推荐靠近我的第一个地点的类似类型的地方。",
+              promptEn: "I want you to act as a tour guide. I will write my location to you, and you will provide visiting recommendations for a place near my location. In some cases, I will also give you the type of place I want to visit. You will also recommend similar types of places close to my first location."
+            }
+          ]
+        },
+        {
+          id: "reserve",
+          title: "专业备用",
+          description: "更垂直、更专业，放在后面归档备用。",
+          rows: [
+            {
+              priority: "备用",
+              id: "76",
+              name: "算法竞赛专家",
+              type: "IT/编程",
+              usage: "备用",
+              scene: "C++ 算法题、OI/ACM 风格解法",
+              promptCn: "我希望你能扮演一个算法专家的，为我提供一份解决指定算法问题的 C++ 代码。解决方案应该满足所需的时间复杂度约束条件，采用 OI/ACM 风格编写，并且易于他人理解。请提供详细的注释，解释解决方案中使用的任何关键概念或技术。让我们一起努力创建一个高效且易于理解的解决方案！",
+              promptEn: "I hope you can act as an algorithm expert and provide me with C++ code to solve a specified algorithm problem. The solution should meet the required time complexity constraints, be written in OI/ACM style, and be easy for others to understand. Please provide detailed comments explaining any key concepts or techniques used in the solution. Let's work together to create an efficient and understandable solution!"
+            },
+            {
+              priority: "备用",
+              id: "211",
+              name: "茶艺师",
+              type: "行业顾问",
+              usage: "备用",
+              scene: "茶叶品鉴、辨别品质和价值",
+              promptCn: "希望有人有足够的经验来区分各种类型的茶叶，根据味道特征仔细品尝，然后用行家使用的行话报告，以便找出任何给定的茶叶的独特之处，从而确定其价值和高品质的质量。",
+              promptEn: "It is hoped that someone has sufficient experience to distinguish various types of tea leaves, carefully taste them according to their flavor characteristics, and then report using the jargon used by connoisseurs, in order to identify the unique characteristics of any given tea and thus determine its value and high-quality attributes."
+            },
+            {
+              priority: "备用",
+              id: "196",
+              name: "语言病理学家",
+              type: "医生",
+              usage: "备用",
+              scene: "口吃、沟通策略、语言训练建议",
+              promptCn: "我希望您能作为语言病理学家（SLP），提出新的语言模式、沟通策略，并培养他们对不口吃的沟通能力的信心。您应该能够推荐技术、策略和其他治疗方法。在提供建议时，您还需要考虑患者的年龄、生活方式和关注点。",
+              promptEn: "I hope you can act as a Speech-Language Pathologist (SLP) to propose new language patterns, communication strategies, and build their confidence in stutter-free communication. You should be able to recommend techniques, strategies, and other treatment methods. When providing suggestions, you also need to consider the patient's age, lifestyle, and concerns."
+            }
+          ]
+        }
+      ]
+    };
+
+    let data = loadData();
+
+    function loadData() {
+      const saved = localStorage.getItem(storageKey);
+      if (!saved) return structuredClone(defaultData);
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return structuredClone(defaultData);
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem(storageKey, JSON.stringify(data));
+    }
+
+    function render() {
+      groupsEl.innerHTML = "";
+      const keyword = searchInput.value.trim().toLowerCase();
+
+      data.groups.forEach((group, groupIndex) => {
+        const section = document.createElement("section");
+        section.className = "group";
+
+        section.innerHTML = `
+          <div class="group-head">
+            <div>
+              <div class="group-title">
+                <h2 contenteditable="true" data-field="title">${escapeHtml(group.title)}</h2>
+                <span class="count">${group.rows.length} 条</span>
+              </div>
+              <p class="group-desc" contenteditable="true" data-field="description">${escapeHtml(group.description)}</p>
+            </div>
+            <button class="primary" data-action="add-row">+ 上传新内容</button>
+          </div>
+          <div class="table-card">
+            <table>
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        `;
+
+        const title = section.querySelector('[data-field="title"]');
+        const description = section.querySelector('[data-field="description"]');
+        title.addEventListener("input", () => {
+          group.title = title.textContent.trim();
+          saveData();
+        });
+        description.addEventListener("input", () => {
+          group.description = description.textContent.trim();
+          saveData();
+        });
+
+        section.querySelector('[data-action="add-row"]').addEventListener("click", () => {
+          addRow(groupIndex);
+        });
+
+        renderTable(section, group, keyword);
+        groupsEl.appendChild(section);
+      });
+    }
+
+    function renderTable(section, group, keyword) {
+      const thead = section.querySelector("thead");
+      const tbody = section.querySelector("tbody");
+      const headRow = document.createElement("tr");
+
+      data.columns.forEach((column, colIndex) => {
+        const th = document.createElement("th");
+        th.className = column.className || "";
+        th.contentEditable = "true";
+        th.textContent = column.label;
+        th.addEventListener("input", () => {
+          column.label = th.textContent.trim() || `新列 ${colIndex + 1}`;
+          saveData();
+        });
+        headRow.appendChild(th);
+      });
+
+      thead.appendChild(headRow);
+
+      group.rows.forEach((row) => {
+        const haystack = Object.values(row).join(" ").toLowerCase();
+        if (keyword && !haystack.includes(keyword)) return;
+
+        const tr = document.createElement("tr");
+        data.columns.forEach((column) => {
+          const td = document.createElement("td");
+          td.contentEditable = "true";
+          td.dataset.key = column.key;
+
+          const value = row[column.key] || "";
+          if (column.key === "priority" && value) {
+            td.innerHTML = `<span class="pill">${escapeHtml(value)}</span>`;
+          } else {
+            td.textContent = value;
+          }
+
+          td.addEventListener("focus", () => {
+            if (column.key === "priority" && td.querySelector(".pill")) {
+              td.textContent = row[column.key] || "";
+            }
+          });
+
+          td.addEventListener("input", () => {
+            row[column.key] = td.textContent.trim();
+            saveData();
+          });
+
+          td.addEventListener("blur", () => {
+            row[column.key] = td.textContent.trim();
+            saveData();
+            if (column.key === "priority" && row[column.key]) {
+              td.innerHTML = `<span class="pill">${escapeHtml(row[column.key])}</span>`;
+            }
+          });
+
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    function addRow(groupIndex) {
+      const row = {};
+      data.columns.forEach((column) => {
+        row[column.key] = "";
+      });
+      row.priority = data.groups[groupIndex].title;
+      data.groups[groupIndex].rows.push(row);
+      saveData();
+      render();
+    }
+
+    function addColumn() {
+      const index = data.columns.length + 1;
+      const key = `custom${Date.now()}`;
+      data.columns.push({
+        key,
+        label: `新列 ${index}`,
+        className: "col-prompt-cn"
+      });
+      data.groups.forEach((group) => {
+        group.rows.forEach((row) => {
+          row[key] = "";
+        });
+      });
+      saveData();
+      render();
+    }
+
+    function exportJson() {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "prompt-library-full.json";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    addColumnBtn.addEventListener("click", addColumn);
+    exportBtn.addEventListener("click", exportJson);
+    resetBtn.addEventListener("click", () => {
+      localStorage.removeItem(storageKey);
+      data = structuredClone(defaultData);
+      searchInput.value = "";
+      render();
+    });
+    searchInput.addEventListener("input", render);
+
+    render();
+  </script>
+</body>
+</html>
