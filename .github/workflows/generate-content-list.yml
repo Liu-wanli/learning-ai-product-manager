@@ -1,0 +1,40 @@
+name: Generate content list
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "notes/**/*.html"
+      - "ai-practice/**/*.html"
+      - "learning-camp/**/*.html"
+      - "projects/**/*.html"
+      - "english/**/*.html"
+      - "scripts/generate-content-list.js"
+      - ".github/workflows/generate-content-list.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Generate data/content.json
+        run: node scripts/generate-content-list.js
+
+      - name: Commit updated content list
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update content list"
+          file_pattern: data/content.json
