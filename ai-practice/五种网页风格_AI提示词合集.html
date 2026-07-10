@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="五种不同网页设计风格的中英文 AI Prompt，可直接复制给 Codex、Claude、Cursor、Lovable、Bolt、v0 等工具使用。">
+  <title>五种网页风格 AI Prompt 合集</title>
+  <style>
+    :root{
+      --bg:#f7f8fc;
+      --text:#11131a;
+      --muted:#6c7180;
+      --purple:#695cff;
+      --blue:#5192ff;
+      --pink:#dc6bd6;
+      --glass:rgba(255,255,255,.64);
+      --line:rgba(24,27,39,.12);
+      --shadow:0 30px 100px rgba(65,56,145,.12);
+      --radius:30px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      background:
+        radial-gradient(circle at 5% 5%,rgba(109,133,255,.24),transparent 28%),
+        radial-gradient(circle at 95% 18%,rgba(232,116,220,.21),transparent 27%),
+        radial-gradient(circle at 48% 72%,rgba(87,207,255,.13),transparent 32%),
+        linear-gradient(180deg,#fbfbfe,#f1f3fb 48%,#f9f9fd);
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    .cursor-glow{
+      position:fixed;
+      width:430px;height:430px;border-radius:50%;
+      pointer-events:none;z-index:0;
+      transform:translate(-50%,-50%);
+      background:radial-gradient(circle,rgba(111,93,255,.16),transparent 68%);
+      opacity:.45;
+    }
+    .nav{
+      position:fixed;z-index:30;top:16px;left:50%;
+      transform:translateX(-50%);
+      width:min(1120px,calc(100% - 28px));height:62px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 20px;border-radius:20px;
+      background:rgba(255,255,255,.66);
+      border:1px solid rgba(255,255,255,.9);
+      backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+      box-shadow:0 16px 50px rgba(51,46,100,.09);
+    }
+    .brand{font-weight:850;letter-spacing:-.045em}
+    .brand b{color:var(--purple)}
+    .nav-links{display:flex;gap:21px;font-size:13px;color:#5f6471}
+    .nav-links a:hover{color:#111}
+    .hero{
+      min-height:92vh;position:relative;z-index:1;
+      display:flex;align-items:center;justify-content:center;
+      padding:135px 24px 85px;text-align:center;
+    }
+    .hero-inner{max-width:1050px}
+    .badge{
+      display:inline-flex;padding:8px 14px;border-radius:999px;
+      background:rgba(255,255,255,.65);
+      border:1px solid rgba(255,255,255,.9);
+      backdrop-filter:blur(18px);
+      color:#656078;font-size:12px;font-weight:750;letter-spacing:.16em;
+      margin-bottom:27px;
+    }
+    h1{
+      font-size:clamp(54px,9vw,116px);
+      line-height:.93;letter-spacing:-.075em;font-weight:850;
+    }
+    h1 span{
+      display:block;
+      background:linear-gradient(90deg,#21242b 10%,#6557f3 50%,#dd68d6 90%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero p{
+      max-width:790px;margin:32px auto 0;
+      color:var(--muted);font-size:clamp(16px,2vw,21px);
+    }
+    .hero-actions{display:flex;justify-content:center;gap:12px;margin-top:38px;flex-wrap:wrap}
+    .btn{
+      border:1px solid rgba(30,31,40,.1);
+      padding:13px 20px;border-radius:999px;font-size:14px;font-weight:750;
+      transition:.3s;
+    }
+    .btn:hover{transform:translateY(-3px)}
+    .btn.primary{background:#16171d;color:#fff}
+    .btn.light{background:rgba(255,255,255,.7);backdrop-filter:blur(16px)}
+    main{position:relative;z-index:2}
+    .prompt-section{padding:105px 24px}
+    .container{width:min(1120px,100%);margin:auto}
+    .section-no{
+      color:#7b7f8d;font-size:12px;font-weight:800;letter-spacing:.2em;
+      margin-bottom:12px;
+    }
+    .section-title{
+      font-size:clamp(38px,5vw,68px);
+      line-height:1.05;letter-spacing:-.055em;margin-bottom:9px;
+    }
+    .section-en{font-size:15px;color:#7b7f8a;letter-spacing:.08em;margin-bottom:28px}
+    .summary{
+      padding:25px 28px;border-radius:24px;margin-bottom:22px;
+      color:#606572;background:rgba(255,255,255,.62);
+      border:1px solid rgba(255,255,255,.93);
+      backdrop-filter:blur(22px);box-shadow:var(--shadow);
+    }
+    .prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .prompt-card{
+      position:relative;padding:28px;border-radius:var(--radius);
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,.94);
+      backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);
+      box-shadow:0 20px 70px rgba(55,50,110,.08);
+      transition:transform .35s,box-shadow .35s;
+      overflow:hidden;
+    }
+    .prompt-card:hover{
+      transform:translateY(-8px) scale(1.007);
+      box-shadow:0 34px 90px rgba(70,58,155,.14);
+    }
+    .prompt-card h3{
+      font-size:20px;letter-spacing:-.025em;margin-bottom:15px;
+      padding-right:88px;
+    }
+    .prompt-box{
+      white-space:pre-wrap;
+      min-height:680px;
+      padding:22px;border-radius:20px;
+      background:#15161c;color:#e8e9ef;
+      font:13px/1.82 Consolas,Monaco,"Courier New",monospace;
+      overflow:auto;
+    }
+    .copy-btn{
+      position:absolute;right:28px;top:25px;
+      border:1px solid rgba(30,30,40,.1);
+      background:#fff;color:#252631;
+      border-radius:999px;padding:8px 12px;
+      cursor:pointer;font-size:12px;font-weight:750;
+      transition:.25s;
+    }
+    .copy-btn:hover{transform:translateY(-2px);background:#17181e;color:#fff}
+    .divider{
+      width:min(1120px,calc(100% - 48px));
+      height:100px;margin:auto;
+      display:flex;align-items:center;gap:22px;
+      color:#8b8e9a;font-size:11px;letter-spacing:.22em;
+    }
+    .divider:before,.divider:after{
+      content:"";height:1px;background:var(--line);flex:1;
+    }
+    .dark-zone{
+      margin:0 12px;border-radius:40px;
+      color:#f5f5f8;
+      background:
+        radial-gradient(circle at 50% 0%,rgba(108,96,255,.24),transparent 34%),
+        #07070a;
+    }
+    .dark-zone .section-no,.dark-zone .section-en{color:#8c8d99}
+    .dark-zone .summary,.dark-zone .prompt-card{
+      background:rgba(22,22,28,.72);
+      border-color:rgba(255,255,255,.09);
+      box-shadow:0 30px 100px rgba(0,0,0,.38);
+    }
+    .dark-zone .summary{color:#a0a1ab}
+    .dark-zone .copy-btn{background:#f5f5f7;color:#111}
+    .edu-zone .prompt-card:first-child{background:rgba(239,248,255,.82)}
+    .edu-zone .prompt-card:last-child{background:rgba(255,248,235,.82)}
+    .editorial-zone{background:#efede7}
+    .editorial-zone .section-title{
+      font-family:Georgia,"Times New Roman",serif;font-weight:500;
+    }
+    .editorial-zone .summary{
+      border-radius:0;background:#e3dfd4;box-shadow:none;
+    }
+    .editorial-zone .prompt-card{
+      border-radius:0;border-top:2px solid #171717;
+      background:transparent;box-shadow:none;
+    }
+    .final-note{
+      width:min(1120px,calc(100% - 48px));margin:70px auto 110px;
+      padding:28px;border-radius:25px;
+      background:rgba(255,255,255,.66);
+      border:1px solid rgba(255,255,255,.92);
+      color:#656a76;
+    }
+    footer{
+      padding:70px 24px;text-align:center;background:#121319;color:#aaaeb9;
+    }
+    footer strong{color:white}
+    .reveal{
+      opacity:0;transform:translateY(38px);
+      transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.visible{opacity:1;transform:none}
+    @media(max-width:850px){
+      .prompt-grid{grid-template-columns:1fr}
+      .prompt-box{min-height:auto}
+      .nav-links{display:none}
+      .prompt-section{padding:80px 18px}
+      .dark-zone{margin:0 6px;border-radius:28px}
+      h1{font-size:56px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <a href="#top" class="brand">PROMPT<b>5</b></a>
+    <div class="nav-links">
+      <a href="#style1">极简</a>
+      <a href="#style2">科技</a>
+      <a href="#style3">电影</a>
+      <a href="#style4">教育</a>
+      <a href="#style5">杂志</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="badge">AI WEBSITE PROMPT COLLECTION · 中英双语</div>
+      <h1>五种网页风格<span>完整 AI Prompt</span></h1>
+      <p>下面的提示词可以直接复制给 Codex、Claude、Cursor、Lovable、Bolt、v0、Replit AI、Trae 或 Windsurf，用于生成 HTML、CSS 和 JavaScript 网页。</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#style1">查看提示词</a>
+        <a class="btn light" href="#guide">使用说明</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="prompt-section" id="style1">
+      <div class="container">
+        <div class="section-no reveal">STYLE 01 / 05</div>
+        <h2 class="section-title reveal">苹果官网极简风</h2>
+        <div class="section-en reveal">Apple-inspired Minimalist Website</div>
+        <div class="summary reveal">适合企业官网、科技产品、课程介绍、个人品牌和作品集。核心是大面积留白、精准对齐、超大标题和克制动效。</div>
+
+        <div class="prompt-grid">
+          <article class="prompt-card reveal">
+            <h3>中文完整 Prompt</h3>
+            <button class="copy-btn">复制中文</button>
+            <div class="prompt-box">你是一名资深 UI/UX 设计师和前端开发工程师。
+
+请为我设计并开发一个具有苹果官网视觉气质的极简网页，并输出完整、可直接运行的 HTML、CSS 和 JavaScript 代码。
+
+【整体目标】
+网页需要简洁、高级、克制、现代，具有强烈的品牌感和产品感。不要做成普通模板网站，也不要堆砌装饰和颜色。
+
+【视觉风格】
+1. 使用白色或非常浅的灰色作为主要背景。
+2. 页面保留大面积留白，让每个模块都有充足的呼吸感。
+3. 所有内容需要严格居中、对齐，并遵循统一的网格系统。
+4. 首页使用超大标题、简短副标题和一个核心视觉区域。
+5. 主色控制在黑色、白色、灰色，可以少量使用蓝色作为强调色。
+6. 卡片使用大圆角、极轻的边框和柔和阴影。
+7. 字体清晰、现代，标题与正文具有明确层级。
+8. 避免廉价渐变、复杂纹理、花哨图标和过多颜色。
+
+【页面结构】
+请至少包含：
+- 顶部半透明悬浮导航栏
+- 首页 Hero 大标题区域
+- 一个轮播图或大型视觉展示区域
+- 三张核心特色卡片
+- 产品、作品或项目展示模块
+- 数据或优势展示模块
+- 行动按钮区域
+- 简洁页脚
+
+【交互与动画】
+1. 页面滚动时，文字、图片和卡片缓慢淡入并向上出现。
+2. 鼠标经过卡片时，卡片轻微上浮和放大。
+3. 按钮悬停时出现轻微阴影和位移动画。
+4. 导航栏滚动时保持固定，并带有毛玻璃效果。
+5. 所有动画持续时间控制在 0.4 至 0.8 秒。
+6. 动画需要自然、克制，不要出现夸张弹跳。
+
+【技术要求】
+1. 使用原生 HTML、CSS 和 JavaScript。
+2. 不使用 Bootstrap、Tailwind、Vue 或 React。
+3. 所有代码结构清晰，并添加必要注释。
+4. 页面必须适配电脑、平板和手机。
+5. 保证代码复制后可以直接运行。
+6. 如果缺少真实图片，可以使用纯色渐变块或占位图代替。
+7. 最终请分别输出完整的 index.html、style.css 和 script.js 代码。
+
+请先思考整体页面结构和视觉层级，再开始输出代码。</div>
+          </article>
+
+          <article class="prompt-card reveal">
+            <h3>English Full Prompt</h3>
+            <button class="copy-btn">Copy English</button>
+            <div class="prompt-box">You are a senior UI/UX designer and front-end engineer.
+
+Design and develop a premium Apple-inspired minimalist website, and provide complete, production-ready HTML, CSS, and JavaScript code.
+
+[Overall Goal]
+The website should feel minimal, refined, calm, modern, and highly polished. It must not look like a generic template. Avoid visual clutter, unnecessary decoration, and excessive colors.
+
+[Visual Direction]
+1. Use a white or very light-gray background.
+2. Create generous whitespace between all sections.
+3. Keep all content precisely aligned and based on a consistent grid system.
+4. Use oversized typography, concise copy, and one dominant visual focus in the hero section.
+5. Keep the main palette limited to black, white, and gray, with a small amount of blue as an accent.
+6. Use large rounded corners, subtle borders, and very soft shadows.
+7. Create a clear hierarchy between headings, subheadings, and body text.
+8. Avoid cheap gradients, busy textures, decorative icons, and excessive colors.
+
+[Page Structure]
+Include at least:
+- A floating translucent navigation bar
+- A large hero section
+- A carousel or large visual showcase
+- Three core feature cards
+- A product, project, or portfolio showcase
+- A metrics or advantages section
+- A call-to-action section
+- A clean footer
+
+[Interactions and Motion]
+1. Reveal text, images, and cards slowly as the user scrolls.
+2. Add subtle card lift and scale effects on hover.
+3. Add gentle shadow and movement feedback to buttons.
+4. Keep the navigation fixed and apply a glass-like blur effect.
+5. Keep animation durations between 0.4 and 0.8 seconds.
+6. Motion should feel natural and restrained, with no exaggerated bouncing.
+
+[Technical Requirements]
+1. Use vanilla HTML, CSS, and JavaScript.
+2. Do not use Bootstrap, Tailwind, Vue, or React.
+3. Keep the code clean, well-structured, and commented where needed.
+4. Make the website fully responsive for desktop, tablet, and mobile.
+5. Ensure the code runs immediately after being copied.
+6. Use gradient blocks or placeholders when real images are unavailable.
+7. Output complete index.html, style.css, and script.js files separately.
+
+Think through the content hierarchy and visual structure before writing the code.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span>01 / 05 · SEPARATOR</span></div>
+
+    <section class="prompt-section" id="style2">
+      <div class="container">
+        <div class="section-no reveal">STYLE 02 / 05</div>
+        <h2 class="section-title reveal">苹果渐变科技风</h2>
+        <div class="section-en reveal">Apple-inspired Gradient Technology Website</div>
+        <div class="summary reveal">适合 AI、SaaS、数字孪生、科技营地、创新教育和未来感项目。核心是极简排版、蓝紫渐变、玻璃卡片和柔和动态光效。</div>
+
+        <div class="prompt-grid">
+          <article class="prompt-card reveal">
+            <h3>中文完整 Prompt</h3>
+            <button class="copy-btn">复制中文</button>
+            <div class="prompt-box">你是一名擅长苹果官网风格、科技产品和互动视觉的资深 UI/UX 设计师与前端开发工程师。
+
+请为我设计并开发一个“苹果极简风 + 渐变科技感”的网页，并输出完整、可运行的 HTML、CSS 和 JavaScript 代码。
+
+【整体目标】
+网页需要在苹果式简洁、高级和精确对齐的基础上，加入更具创意的未来科技氛围。整体应当轻盈、现代、创新，而不是花哨或廉价。
+
+【视觉风格】
+1. 页面以白色和浅灰色为基础背景。
+2. 使用柔和的蓝色、紫色和少量粉色渐变。
+3. 背景中加入模糊的极光光晕或渐变光球。
+4. 使用半透明玻璃卡片、背景模糊和细微边缘高光。
+5. 页面内容居中并严格对齐，保留大量左右留白。
+6. 首页使用超大标题，其中部分文字可使用渐变发光效果。
+7. 卡片采用大圆角、轻柔阴影和清晰层级。
+8. 不使用高饱和刺眼颜色，不要让页面像游戏界面。
+
+【页面结构】
+请至少包含：
+- 半透明悬浮导航栏
+- 首页大标题和科技感副标题
+- 一个全宽轮播图或视觉展示区域
+- 三张玻璃拟态特色卡片
+- 产品或作品展示模块
+- 核心数据模块
+- 用户评价或合作品牌模块
+- 行动按钮区域
+- 简洁页脚
+
+【交互与动画】
+1. 页面滚动时，各个模块分阶段淡入和上移。
+2. 背景光晕缓慢漂浮，速度不要过快。
+3. 鼠标移动时，页面中的柔和光晕可以轻微跟随。
+4. 鼠标经过玻璃卡片时，卡片轻微上浮、放大，并出现局部高光。
+5. 按钮悬停时增加柔和发光和位移动画。
+6. 轮播图切换需要平滑自然。
+7. 动画要高级、轻柔，不要夸张弹跳。
+
+【技术要求】
+1. 使用原生 HTML、CSS 和 JavaScript。
+2. 不使用任何大型框架。
+3. 可以使用 CSS backdrop-filter、渐变、阴影和伪元素实现效果。
+4. 页面必须响应式适配电脑和手机。
+5. 注意动画性能，避免过度使用复杂滤镜。
+6. 如果没有真实图片，使用高级的纯色渐变视觉块代替。
+7. 输出完整的 index.html、style.css 和 script.js。
+
+请确保最后生成的网站具有专业科技品牌官网的质量，而不是普通网页模板。</div>
+          </article>
+
+          <article class="prompt-card reveal">
+            <h3>English Full Prompt</h3>
+            <button class="copy-btn">Copy English</button>
+            <div class="prompt-box">You are a senior UI/UX designer and front-end engineer specializing in Apple-inspired interfaces, technology products, and interactive visual experiences.
+
+Design and develop a website that combines Apple-like minimalism with futuristic gradient technology aesthetics. Provide complete and runnable HTML, CSS, and JavaScript code.
+
+[Overall Goal]
+Build a website that feels minimal, precise, premium, light, modern, and innovative. Add creative futuristic details without making the design flashy, noisy, or cheap.
+
+[Visual Direction]
+1. Use white and light-gray as the foundation.
+2. Add soft blue, purple, and subtle pink gradients.
+3. Place blurred aurora glows or gradient light orbs in the background.
+4. Use translucent glassmorphism cards with backdrop blur and subtle edge highlights.
+5. Keep the layout centered, precisely aligned, and surrounded by generous whitespace.
+6. Use oversized hero typography, with selected words using a refined gradient glow.
+7. Use large rounded corners, soft shadows, and a clear visual hierarchy.
+8. Avoid overly saturated colors and do not make the website look like a gaming interface.
+
+[Page Structure]
+Include at least:
+- A floating translucent navigation bar
+- A large hero headline and futuristic subtitle
+- A full-width carousel or visual showcase
+- Three glassmorphism feature cards
+- A product or portfolio section
+- A core metrics section
+- Testimonials or partner logos
+- A call-to-action area
+- A minimal footer
+
+[Interactions and Motion]
+1. Reveal sections gradually with fade and upward motion while scrolling.
+2. Animate background glows with slow floating movement.
+3. Add a subtle cursor-following glow.
+4. On hover, glass cards should lift slightly, scale gently, and display a localized highlight.
+5. Buttons should gain a soft glow and slight movement on hover.
+6. Carousel transitions should be smooth and elegant.
+7. Keep all motion refined and restrained, with no exaggerated bouncing.
+
+[Technical Requirements]
+1. Use vanilla HTML, CSS, and JavaScript.
+2. Do not use large frameworks.
+3. Use CSS backdrop-filter, gradients, shadows, and pseudo-elements where appropriate.
+4. Make the website fully responsive.
+5. Keep animations performant and avoid excessive filters.
+6. Use premium gradient visual blocks when real images are unavailable.
+7. Output complete index.html, style.css, and script.js files.
+
+The final result should feel like a professional technology brand website, not a generic template.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span>02 / 05 · SEPARATOR</span></div>
+
+    <section class="prompt-section dark-zone" id="style3">
+      <div class="container">
+        <div class="section-no reveal">STYLE 03 / 05</div>
+        <h2 class="section-title reveal">黑色电影发布会风</h2>
+        <div class="section-en reveal">Dark Cinematic Keynote Website</div>
+        <div class="summary reveal">适合科技发布、新品展示、未来城市、数字艺术、赛事作品和高端品牌开场。核心是黑色舞台、聚光灯、逐幕叙事和沉浸式滚动。</div>
+
+        <div class="prompt-grid">
+          <article class="prompt-card reveal">
+            <h3>中文完整 Prompt</h3>
+            <button class="copy-btn">复制中文</button>
+            <div class="prompt-box">你是一名擅长科技发布会、电影叙事和沉浸式网页体验的资深 UI/UX 设计师与前端开发工程师。
+
+请为我设计并开发一个黑色电影感、科技发布会风格的网站，并输出完整、可运行的 HTML、CSS 和 JavaScript 代码。
+
+【整体目标】
+网页要像一场高端科技新品发布会，也像一部未来科技电影的开场。页面需要神秘、高级、震撼、沉浸，但不能杂乱或过度炫技。
+
+【视觉风格】
+1. 使用深黑、炭灰和少量深蓝紫作为主要颜色。
+2. 首页采用全屏视觉，大标题在黑色背景中缓慢出现。
+3. 使用聚光灯、柔和发光、暗色渐变和局部高亮。
+4. 标题使用大尺寸白色字体，可加入低饱和蓝紫发光效果。
+5. 图片或视觉区域占据较大空间，文字保持简洁。
+6. 卡片使用暗色玻璃效果、细边框和低调阴影。
+7. 每一屏只表达一个主要信息。
+8. 保持高对比和电影感，不使用过多鲜艳颜色。
+
+【页面结构】
+请至少包含：
+- 黑色沉浸式顶部导航栏
+- 全屏电影开场式 Hero
+- 大型视觉轮播或章节展示
+- 三张暗色核心特色卡片
+- 分章节项目介绍
+- 数据或核心成果展示
+- 大型行动按钮区域
+- 黑色简洁页脚
+
+【交互与动画】
+1. 页面滚动时，内容像电影章节一样逐幕呈现。
+2. 每个章节进入视口时，标题、文字和视觉分层出现。
+3. 使用缓慢淡入、轻微缩放和视差移动。
+4. 背景聚光灯或发光区域可以缓慢移动。
+5. 鼠标经过卡片时，边框和局部光效增强。
+6. 页面滚动节奏要稳定，不要一次显示太多内容。
+7. 可以加入发光文字，但必须保持克制。
+8. 不要使用夸张弹跳、快速旋转或游戏式粒子特效。
+
+【技术要求】
+1. 使用原生 HTML、CSS 和 JavaScript。
+2. 不使用 Bootstrap、Tailwind 或前端框架。
+3. 优先使用 CSS 动画和 Intersection Observer 实现滚动效果。
+4. 页面要适配电脑和手机。
+5. 动画要流畅，并照顾 prefers-reduced-motion。
+6. 没有图片时可以使用深色渐变和纯色视觉块。
+7. 输出完整的 index.html、style.css 和 script.js。
+
+最终页面应具有高端科技发布会和电影预告片般的视觉体验。</div>
+          </article>
+
+          <article class="prompt-card reveal">
+            <h3>English Full Prompt</h3>
+            <button class="copy-btn">Copy English</button>
+            <div class="prompt-box">You are a senior UI/UX designer and front-end engineer specializing in technology keynotes, cinematic storytelling, and immersive web experiences.
+
+Design and develop a dark cinematic keynote-style website. Provide complete and runnable HTML, CSS, and JavaScript code.
+
+[Overall Goal]
+The website should feel like a premium technology product launch and the opening scene of a futuristic film. It must feel mysterious, immersive, dramatic, and luxurious without becoming cluttered or overdesigned.
+
+[Visual Direction]
+1. Use deep black, charcoal, and subtle dark blue-purple tones.
+2. Create a full-screen hero with a large headline slowly appearing against a dark background.
+3. Use spotlight effects, soft glow, dark gradients, and localized highlights.
+4. Use oversized white typography with restrained blue-purple glow.
+5. Give large visual areas more space and keep the copy concise.
+6. Use dark glass cards with thin borders and subtle shadows.
+7. Let each screen communicate one primary message.
+8. Maintain high contrast and cinematic depth without excessive bright colors.
+
+[Page Structure]
+Include at least:
+- A dark immersive navigation bar
+- A full-screen cinematic hero section
+- A large visual carousel or chapter showcase
+- Three dark feature cards
+- A multi-chapter project story
+- A metrics or achievements section
+- A large call-to-action scene
+- A minimal dark footer
+
+[Interactions and Motion]
+1. Reveal content like cinematic chapters while the user scrolls.
+2. Animate headlines, copy, and visuals in separate layers.
+3. Use slow fades, gentle scaling, and subtle parallax movement.
+4. Animate spotlights or glowing background areas slowly.
+5. Enhance borders and localized light effects when cards are hovered.
+6. Maintain a deliberate scrolling rhythm and avoid showing too much at once.
+7. Use glowing typography sparingly.
+8. Avoid exaggerated bouncing, fast rotation, and game-like particles.
+
+[Technical Requirements]
+1. Use vanilla HTML, CSS, and JavaScript.
+2. Do not use Bootstrap, Tailwind, or front-end frameworks.
+3. Use CSS animations and Intersection Observer for scroll effects.
+4. Make the website responsive for desktop and mobile.
+5. Keep animation smooth and support prefers-reduced-motion.
+6. Use dark gradients and premium color blocks when images are unavailable.
+7. Output complete index.html, style.css, and script.js files.
+
+The final experience should resemble a premium technology keynote and a cinematic trailer.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span>03 / 05 · SEPARATOR</span></div>
+
+    <section class="prompt-section edu-zone" id="style4">
+      <div class="container">
+        <div class="section-no reveal">STYLE 04 / 05</div>
+        <h2 class="section-title reveal">清新现代教育品牌风</h2>
+        <div class="section-en reveal">Modern Friendly Education Website</div>
+        <div class="summary reveal">适合学校社团、少儿编程、研学营、课程招生和学习平台。核心是清晰、可信、亲和、明亮，同时保持现代和专业。</div>
+
+        <div class="prompt-grid">
+          <article class="prompt-card reveal">
+            <h3>中文完整 Prompt</h3>
+            <button class="copy-btn">复制中文</button>
+            <div class="prompt-box">你是一名擅长教育品牌、儿童产品和现代网页设计的资深 UI/UX 设计师与前端开发工程师。
+
+请为我设计并开发一个清新、现代、专业且具有亲和力的教育品牌网站，并输出完整、可运行的 HTML、CSS 和 JavaScript 代码。
+
+【目标用户】
+网站主要面向家长、学生和学校老师。
+家长需要感到专业、可信、清晰；
+学生需要感到有趣、轻松、有参与感；
+老师需要能够快速理解课程结构和教学成果。
+
+【视觉风格】
+1. 使用白色、浅蓝色或非常浅的暖灰色背景。
+2. 使用柔和的蓝色、紫色、绿色和橙色作为点缀。
+3. 卡片使用大圆角、柔和阴影和清晰边框。
+4. 页面内容居中、对齐，并保证信息层级清晰。
+5. 标题醒目但不过于严肃，正文易读。
+6. 可以加入简单友好的图形和图标，但不要幼稚。
+7. 整体需要明亮、清新、现代、可信。
+8. 不要使用过于商务、冰冷或复杂的视觉风格。
+
+【页面结构】
+请至少包含：
+- 简洁友好的顶部导航栏
+- 首页课程或品牌大标题
+- 一个课程图片或纯色轮播图
+- 三张课程特色卡片
+- 学习流程或课程安排模块
+- 学生作品展示模块
+- 成长成果或能力展示模块
+- 家长评价或数据展示
+- 报名行动按钮
+- 简洁页脚
+
+【交互与动画】
+1. 页面滚动时内容缓慢淡入。
+2. 卡片悬停时轻微上浮和放大。
+3. 按钮点击和悬停需要有清晰反馈。
+4. 轮播图切换要平滑。
+5. 图标可以有轻微浮动，但不要出现复杂动画。
+6. 所有交互都要容易理解，不影响阅读。
+
+【技术要求】
+1. 使用原生 HTML、CSS 和 JavaScript。
+2. 不使用 Bootstrap、Tailwind、Vue 或 React。
+3. 页面必须响应式适配电脑和手机。
+4. 代码结构清晰，方便后续替换文字和图片。
+5. 没有真实图片时可以使用颜色块和占位区域。
+6. 注意文字可读性和按钮可点击区域。
+7. 输出完整的 index.html、style.css 和 script.js。
+
+最终页面要让家长觉得专业可靠，让学生觉得课程值得期待。</div>
+          </article>
+
+          <article class="prompt-card reveal">
+            <h3>English Full Prompt</h3>
+            <button class="copy-btn">Copy English</button>
+            <div class="prompt-box">You are a senior UI/UX designer and front-end engineer specializing in education brands, children's products, and modern web design.
+
+Design and develop a fresh, modern, professional, and approachable education website. Provide complete and runnable HTML, CSS, and JavaScript code.
+
+[Target Audience]
+The website is primarily for parents, students, and teachers.
+Parents should feel that the brand is professional, trustworthy, and clear.
+Students should feel that the experience is fun, welcoming, and engaging.
+Teachers should be able to understand the course structure and outcomes quickly.
+
+[Visual Direction]
+1. Use white, pale blue, or very light warm-gray backgrounds.
+2. Use soft blue, purple, green, and orange accents.
+3. Use large rounded cards, gentle shadows, and clear borders.
+4. Keep all content centered, aligned, and easy to scan.
+5. Use friendly but professional typography.
+6. Add simple and welcoming graphics or icons without making the design childish.
+7. Keep the overall experience bright, modern, clean, and trustworthy.
+8. Avoid cold corporate visuals and overly complicated layouts.
+
+[Page Structure]
+Include at least:
+- A clean and friendly navigation bar
+- A large course or brand hero section
+- A course image carousel or color-based carousel
+- Three course feature cards
+- A learning process or schedule section
+- A student project showcase
+- A skills and growth outcomes section
+- Parent testimonials or educational metrics
+- A registration call-to-action
+- A clean footer
+
+[Interactions and Motion]
+1. Reveal content slowly as the user scrolls.
+2. Add subtle card lift and scale effects on hover.
+3. Provide clear hover and click feedback for buttons.
+4. Keep carousel transitions smooth.
+5. Allow icons to float very slightly, but avoid complex animation.
+6. Keep all interactions intuitive and easy to understand.
+
+[Technical Requirements]
+1. Use vanilla HTML, CSS, and JavaScript.
+2. Do not use Bootstrap, Tailwind, Vue, or React.
+3. Make the website responsive for desktop and mobile.
+4. Keep the code easy to edit so text and images can be replaced later.
+5. Use color blocks and placeholders when real images are unavailable.
+6. Maintain strong readability and accessible button sizes.
+7. Output complete index.html, style.css, and script.js files.
+
+The final website should feel trustworthy to parents and exciting to students.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><span>04 / 05 · SEPARATOR</span></div>
+
+    <section class="prompt-section editorial-zone" id="style5">
+      <div class="container">
+        <div class="section-no reveal">STYLE 05 / 05</div>
+        <h2 class="section-title reveal">极简杂志编辑风</h2>
+        <div class="section-en reveal">Minimal Editorial and Swiss Grid Website</div>
+        <div class="summary reveal">适合设计工作室、个人作品集、摄影、文化品牌、艺术项目和品牌故事。核心是强字体、非对称网格、图文关系和留白叙事。</div>
+
+        <div class="prompt-grid">
+          <article class="prompt-card reveal">
+            <h3>中文完整 Prompt</h3>
+            <button class="copy-btn">复制中文</button>
+            <div class="prompt-box">你是一名擅长杂志编辑设计、瑞士网格、品牌视觉和前端开发的资深 UI/UX 设计师。
+
+请为我设计并开发一个极简杂志编辑风格的网站，并输出完整、可运行的 HTML、CSS 和 JavaScript 代码。
+
+【整体目标】
+网页需要像一本可以交互的高级设计杂志。整体重点不在复杂特效，而在字体、网格、图片、留白和内容节奏。页面需要具有艺术指导感、品牌感和独特气质。
+
+【视觉风格】
+1. 使用米白、黑色、深灰和低饱和颜色。
+2. 使用超大无衬线标题，并搭配少量优雅衬线字体。
+3. 使用严格的瑞士网格系统。
+4. 部分模块可以采用非对称布局、错位排版和大面积留白。
+5. 图片与文字像杂志页面一样组合。
+6. 使用细线、编号、栏目标签和简洁分割线。
+7. 避免大圆角、玻璃拟态和大量渐变。
+8. 保持克制、艺术、高级和具有编辑气质。
+
+【页面结构】
+请至少包含：
+- 极简顶部导航栏
+- 杂志封面式首页 Hero
+- 一个大型图片或纯色轮播区域
+- 三张编辑式内容卡片
+- 非对称作品展示网格
+- 品牌故事或长文本模块
+- 编号式章节导航
+- 行动按钮或联系模块
+- 极简页脚
+
+【交互与动画】
+1. 页面滚动时文字与图片缓慢淡入。
+2. 图片悬停时轻微缩放。
+3. 链接悬停时使用下划线或文字位移动画。
+4. 页面切换或章节进入时保持安静、克制。
+5. 可以使用轻微视差，但不要使用炫酷粒子和强发光。
+6. 动画需要服务于阅读节奏。
+
+【技术要求】
+1. 使用原生 HTML、CSS 和 JavaScript。
+2. 不使用 Bootstrap、Tailwind 或任何大型框架。
+3. 使用 CSS Grid 和 Flexbox 创建杂志式布局。
+4. 页面必须响应式适配电脑和手机。
+5. 小屏幕上重新组织非对称布局，保证易读。
+6. 如果没有图片，可使用黑白灰和低饱和纯色块。
+7. 输出完整的 index.html、style.css 和 script.js。
+
+最终页面要具有高端设计杂志、文化品牌和创意作品集的气质。</div>
+          </article>
+
+          <article class="prompt-card reveal">
+            <h3>English Full Prompt</h3>
+            <button class="copy-btn">Copy English</button>
+            <div class="prompt-box">You are a senior UI/UX designer and front-end engineer specializing in editorial design, Swiss grids, brand identity, and digital art direction.
+
+Design and develop a minimalist editorial website. Provide complete and runnable HTML, CSS, and JavaScript code.
+
+[Overall Goal]
+The website should feel like an interactive premium design magazine. The design should rely on typography, grid, imagery, whitespace, and editorial pacing rather than complex visual effects. It should feel art-directed, distinctive, cultured, and highly refined.
+
+[Visual Direction]
+1. Use off-white, black, charcoal, and muted colors.
+2. Use oversized sans-serif headlines with selective elegant serif accents.
+3. Build the layout on a strict Swiss grid.
+4. Allow selected sections to use asymmetry, offset compositions, and generous whitespace.
+5. Combine images and text like a premium magazine spread.
+6. Use thin rules, numbering, editorial labels, and simple separators.
+7. Avoid large rounded cards, glassmorphism, and excessive gradients.
+8. Keep the experience restrained, artistic, sophisticated, and editorial.
+
+[Page Structure]
+Include at least:
+- A minimal navigation bar
+- A magazine-cover-style hero section
+- A large image or color-based carousel
+- Three editorial content cards
+- An asymmetric portfolio grid
+- A brand story or long-form text section
+- Numbered chapter navigation
+- A contact or call-to-action section
+- A minimal footer
+
+[Interactions and Motion]
+1. Reveal text and images slowly while scrolling.
+2. Add gentle image scaling on hover.
+3. Use underline or subtle text movement for link interactions.
+4. Keep transitions quiet and restrained.
+5. Allow subtle parallax, but avoid particles and strong glow effects.
+6. Let motion support the reading rhythm.
+
+[Technical Requirements]
+1. Use vanilla HTML, CSS, and JavaScript.
+2. Do not use Bootstrap, Tailwind, or any large framework.
+3. Use CSS Grid and Flexbox to create editorial compositions.
+4. Make the website responsive.
+5. Reorganize asymmetric layouts on small screens for readability.
+6. Use black, white, gray, and muted color blocks when images are unavailable.
+7. Output complete index.html, style.css, and script.js files.
+
+The final website should feel like a premium design magazine, cultural brand, or creative portfolio.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="final-note reveal" id="guide">
+      <strong>怎么使用：</strong>
+      选择其中一种风格，复制中文 Prompt 或英文 Prompt，直接发送给你正在使用的网页生成 AI。然后在提示词最后补充你的网站内容，例如：“这个网站用于展示少儿编程研学营，名称是数字孪生未来工坊，主要包含课程介绍、行程、师资、作品和报名信息。”这样 AI 就会在保留设计风格的同时，生成符合你项目内容的网站。
+    </div>
+  </main>
+
+  <footer>
+    <strong>PROMPT 5</strong><br>
+    五种网页设计风格 · 中英文 AI Prompt 合集
+  </footer>
+
+  <script>
+    const glow = document.querySelector('.cursor-glow');
+    window.addEventListener('pointermove', event => {
+      glow.style.left = event.clientX + 'px';
+      glow.style.top = event.clientY + 'px';
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll('.reveal').forEach((item,index) => {
+      item.style.transitionDelay = Math.min(index % 4,3) * 70 + 'ms';
+      revealObserver.observe(item);
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        const text = button.nextElementSibling.innerText;
+        const original = button.innerText;
+        try{
+          await navigator.clipboard.writeText(text);
+          button.innerText = '已复制 ✓';
+        }catch(error){
+          const area = document.createElement('textarea');
+          area.value = text;
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          area.remove();
+          button.innerText = '已复制 ✓';
+        }
+        setTimeout(() => button.innerText = original, 1600);
+      });
+    });
+  </script>
+</body>
+</html>
