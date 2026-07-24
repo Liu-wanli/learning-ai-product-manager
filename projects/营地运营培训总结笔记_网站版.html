@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="营地运营培训总结笔记：岗位职责、开营前准备、营期执行、绩效考核与安全管理。" />
+  <title>营地运营培训总结笔记</title>
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: rgba(255,255,255,.88);
+      --surface-solid: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.08);
+      --blue: #0071e3;
+      --blue-soft: #eaf4ff;
+      --red: #d70015;
+      --red-soft: #fff2f3;
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 94px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                   "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.75;
+      letter-spacing: .01em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button {
+      font: inherit;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      background: rgba(250,250,252,.78);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      transition: color .4s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: transform .45s ease, box-shadow .45s ease, background .45s ease;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: var(--blue);
+      box-shadow: 0 8px 24px rgba(0,113,227,.22);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    }
+
+    .hero {
+      padding: 110px 20px 72px;
+      text-align: center;
+    }
+
+    .hero-inner {
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 20px;
+      font-size: clamp(44px, 7vw, 86px);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      font-weight: 800;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(18px, 2.4vw, 25px);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .visual-wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto 90px;
+    }
+
+    .visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 430px;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 72% 28%, rgba(0,113,227,.22), transparent 27%),
+        radial-gradient(circle at 22% 82%, rgba(80,80,86,.14), transparent 22%),
+        linear-gradient(145deg, #ffffff 0%, #eef3f8 50%, #dfeaf6 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.8);
+    }
+
+    .visual-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 100%);
+    }
+
+    .visual-content {
+      position: relative;
+      z-index: 2;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .visual-card {
+      width: min(760px, 100%);
+      padding: 34px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: 0 20px 60px rgba(0,0,0,.10);
+    }
+
+    .visual-card h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 52px);
+      letter-spacing: -.04em;
+    }
+
+    .visual-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .section {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto 100px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+
+    .section-header p {
+      margin: 14px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface-solid);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 36px rgba(0,0,0,.05);
+      transition: transform .55s ease, box-shadow .55s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px) scale(1.01);
+      box-shadow: 0 22px 55px rgba(0,0,0,.10);
+    }
+
+    .feature-card {
+      padding: 32px;
+      min-height: 250px;
+    }
+
+    .feature-no {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 12px;
+      font-size: 25px;
+      letter-spacing: -.02em;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .content-layout {
+      display: grid;
+      grid-template-columns: 280px minmax(0,1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 84px;
+      padding: 24px;
+      background: rgba(255,255,255,.76);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 22px;
+      box-shadow: 0 12px 36px rgba(0,0,0,.05);
+    }
+
+    .toc-title {
+      margin: 0 0 16px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li {
+      margin: 4px 0;
+    }
+
+    .toc-list a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      transition: background .4s ease, color .4s ease;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--text);
+      background: #f0f0f2;
+    }
+
+    .toc-list .sub a {
+      padding-left: 24px;
+      font-size: 13px;
+    }
+
+    .notes {
+      min-width: 0;
+    }
+
+    .chapter {
+      padding: 44px;
+      margin-bottom: 28px;
+      scroll-margin-top: 90px;
+    }
+
+    .chapter-label {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .chapter h2 {
+      margin: 10px 0 26px;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -.035em;
+      line-height: 1.15;
+    }
+
+    .subsection {
+      scroll-margin-top: 90px;
+      padding-top: 10px;
+      margin-top: 34px;
+    }
+
+    .subsection:first-of-type {
+      margin-top: 0;
+    }
+
+    .subsection h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      letter-spacing: -.02em;
+    }
+
+    .subsection h4 {
+      margin: 22px 0 10px;
+      font-size: 18px;
+    }
+
+    .subsection p,
+    .subsection li,
+    .chapter td,
+    .chapter th {
+      font-size: 16px;
+    }
+
+    .subsection p {
+      color: #3a3a3c;
+      margin: 10px 0;
+    }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 12px 0 18px;
+    }
+
+    li {
+      margin: 8px 0;
+      color: #3a3a3c;
+    }
+
+    .space {
+      height: 18px;
+    }
+
+    .key,
+    .blue-key {
+      margin: 18px 0;
+      padding: 16px 18px;
+      border-radius: 14px;
+      font-weight: 650;
+    }
+
+    .key {
+      color: var(--red);
+      background: var(--red-soft);
+      border-left: 4px solid var(--red);
+    }
+
+    .blue-key {
+      color: #005bb5;
+      background: var(--blue-soft);
+      border-left: 4px solid var(--blue);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      padding: 22px;
+      border-radius: 18px;
+      background: #fafafa;
+      border: 1px solid var(--line);
+    }
+
+    .mini-card h4 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f7f7f8;
+      color: #343437;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+    }
+
+    .data-card {
+      padding: 30px 22px;
+      text-align: center;
+    }
+
+    .data-card .num {
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .data-card .label {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      padding: 70px 20px;
+      text-align: center;
+      background: #000;
+      color: #fff;
+      border-radius: 34px;
+    }
+
+    .cta h2 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      letter-spacing: -.04em;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.68);
+      font-size: 18px;
+    }
+
+    .cta .hero-actions {
+      margin-top: 28px;
+    }
+
+    footer {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 46px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 0;
+      color: #fff;
+      background: rgba(0,0,0,.78);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1020px) {
+      .nav-links { display: none; }
+      .feature-grid,
+      .data-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .content-layout { grid-template-columns: 1fr; }
+      .toc { position: relative; top: 0; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-inner { width: min(100% - 24px, var(--max)); }
+      .nav-actions .btn-secondary { display: none; }
+      .hero { padding-top: 78px; }
+      .visual-wrap,
+      .section,
+      footer { width: min(100% - 24px, var(--max)); }
+      .visual,
+      .cta { border-radius: 24px; }
+      .visual-content { padding: 22px; }
+      .visual-card { padding: 24px; }
+      .feature-grid,
+      .data-grid,
+      .mini-grid { grid-template-columns: 1fr; }
+      .chapter { padding: 26px 20px; }
+      .chapter h2 { font-size: 32px; }
+      .subsection h3 { font-size: 21px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .nav, .toc, .hero-actions, .back-top, .cta { display: none !important; }
+      .hero { padding: 24px 0 30px; }
+      .hero h1 { font-size: 34pt; }
+      .hero p { font-size: 13pt; }
+      .visual-wrap { display: none; }
+      .section { width: 100%; margin: 0; }
+      .content-layout { display: block; }
+      .chapter {
+        box-shadow: none;
+        border: 0;
+        border-radius: 0;
+        padding: 18px 0;
+        margin: 0;
+        break-inside: auto;
+      }
+      .subsection h3,
+      .chapter h2 { break-after: avoid; }
+      .key, .blue-key, table, .mini-card { break-inside: avoid; }
+      footer { width: 100%; }
+      @page { size: A4; margin: 16mm 15mm; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">营地运营培训手册</div>
+      <nav class="nav-links">
+        <a href="#overview">概览</a>
+        <a href="#chapter1">岗位职责</a>
+        <a href="#chapter2">工作内容</a>
+        <a href="#chapter3">绩效考核</a>
+        <a href="#chapter4">营地安全</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-secondary" onclick="window.print()">打印</button>
+        <a class="btn btn-primary" href="#chapter1">开始阅读</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero reveal">
+      <div class="hero-inner">
+        <div class="eyebrow">Camp Operations Manual</div>
+        <h1>营地运营培训总结笔记</h1>
+        <p>从岗位职责到营中执行，从绩效考核到安全管理，用一套清晰、可执行、可复盘的标准，保障营地稳定运行。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#chapter1">查看完整笔记</a>
+          <button class="btn btn-secondary" onclick="window.print()">打印 / 导出 PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="visual-wrap reveal">
+      <div class="visual">
+        <div class="visual-grid"></div>
+        <div class="visual-content">
+          <div class="visual-card">
+            <h2>安全 · 满意 · 准时</h2>
+            <p>三大核心维度，共同构成营地成功的标准；安全第一、凡事留痕、每日复盘，是所有岗位共同遵守的底层原则。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-header">
+        <h2>三项核心原则</h2>
+        <p>所有岗位的执行标准，都建立在这三项原则之上。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="card feature-card">
+          <div class="feature-no">01</div>
+          <h3>安全第一</h3>
+          <p>任何课程、活动、交通、住宿和用餐安排，都必须优先判断风险并确保学生安全。</p>
+        </article>
+        <article class="card feature-card">
+          <div class="feature-no">02</div>
+          <h3>凡事留痕</h3>
+          <p>关键操作、沟通、异常事件和交接过程均需记录，确保可追溯、可查证、可复盘。</p>
+        </article>
+        <article class="card feature-card">
+          <div class="feature-no">03</div>
+          <h3>每日复盘</h3>
+          <p>每天总结执行情况、人员状态和问题原因，形成第二天的具体改进措施。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="content-layout">
+        <aside class="toc reveal">
+          <div class="toc-title">目录</div>
+          <ul class="toc-list">
+            <li><a href="#chapter1">一、岗位职责</a></li>
+            <li class="sub"><a href="#principles">1. 三大原则</a></li>
+            <li class="sub"><a href="#leader-role">2. 营长职责</a></li>
+
+            <li><a href="#chapter2">二、工作内容</a></li>
+            <li class="sub"><a href="#before">1. 开营前</a></li>
+            <li class="sub"><a href="#during">2. 营期中</a></li>
+
+            <li><a href="#chapter3">三、绩效考核</a></li>
+
+            <li><a href="#chapter4">四、营地安全</a></li>
+            <li class="sub"><a href="#risk">1. 风险管理</a></li>
+            <li class="sub"><a href="#child">2. 儿童保护</a></li>
+            <li class="sub"><a href="#inspection">3. 每日巡检</a></li>
+            <li class="sub"><a href="#warning">4. 三级预警</a></li>
+            <li class="sub"><a href="#incident">5. 突发事件处理</a></li>
+            <li class="sub"><a href="#parents">6. 家长沟通与舆情</a></li>
+            <li class="sub"><a href="#discipline">7. 工作纪律</a></li>
+          </ul>
+        </aside>
+
+        <div class="notes">
+          <article id="chapter1" class="card chapter reveal">
+            <div class="chapter-label">Chapter 01</div>
+            <h2>一、岗位职责</h2>
+
+            <section id="principles" class="subsection">
+              <h3>1. 三大原则</h3>
+              <div class="key">安全第一、凡事留痕、每日复盘，是营地品质管理的共同基石。</div>
+              <p>营地运营首先要确保学生安全，其次要保证家长和学生的满意度，并让所有活动和行程按照既定计划准时落地。</p>
+
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <h4>安全</h4>
+                  <p>提前预防风险，过程严格盯控，出现问题后按照 SOP 及时处理并书面汇报。</p>
+                </div>
+                <div class="mini-card">
+                  <h4>满意</h4>
+                  <p>让孩子获得快乐与成长，让家长获得及时反馈和良好的服务体验。</p>
+                </div>
+                <div class="mini-card">
+                  <h4>准时</h4>
+                  <p>课程、交通、外出活动和重要节点全部按照计划执行，不延误、不遗漏。</p>
+                </div>
+                <div class="mini-card">
+                  <h4>每日复盘</h4>
+                  <p>总结当天问题、人员状态、执行偏差和第二天改进事项。</p>
+                </div>
+              </div>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="leader-role" class="subsection">
+              <h3>2. 营长职责</h3>
+              <div class="blue-key">岗位使命：确保营地既定计划 100% 高质量落地执行。</div>
+              <p>营长是连接计划与落地的关键枢纽，是班级直接负责人、家长与执行层之间的信息中枢，也是突发事件的第一现场指挥者。</p>
+
+              <h4>核心能力</h4>
+              <ul>
+                <li>执行管控能力：严格按照流程推进，并根据现场情况灵活调整时间。</li>
+                <li>团队带领能力：培训、分配任务并激励班主任、生活老师等执行人员。</li>
+                <li>沟通协调能力：提前对接教学点、餐饮、交通及下一环节负责人。</li>
+                <li>高光时刻把控能力：识别关键拍摄节点，组织照片、视频和家长反馈收集。</li>
+                <li>风险处理能力：保持冷静，快速判断，及时上报并留痕归档。</li>
+              </ul>
+
+              <div class="key">工作标准：提前 30 分钟确认、提前 10 分钟到场、提前 5 分钟提醒。</div>
+            </section>
+          </article>
+
+          <article id="chapter2" class="card chapter reveal">
+            <div class="chapter-label">Chapter 02</div>
+            <h2>二、工作内容</h2>
+
+            <section id="before" class="subsection">
+              <h3>1. 开营前</h3>
+              <p>开营前工作应围绕人员、流程、物资、交通、表格和场地六个方面展开。</p>
+
+              <h4>开营前 7—10 天</h4>
+              <ul>
+                <li>梳理活动流程，了解活动细节并关注特殊要求。</li>
+                <li>准备开营仪式、桌游之夜、结营仪式等重点活动。</li>
+                <li>建立执行群，确认工作人员落位。</li>
+                <li>组织行前说明会并完成相关答疑。</li>
+              </ul>
+
+              <h4>开营前 3 天</h4>
+              <ul>
+                <li>完成服装、医疗急救、活动道具等物资清点。</li>
+                <li>整理营员过敏、生日、住宿和特殊需求信息。</li>
+                <li>准备签到表、分房分组表、生活白皮书、电子设备记录表等。</li>
+              </ul>
+
+              <h4>开营前 2 天</h4>
+              <ul>
+                <li>与司机确认接送时间、地点、路线和车辆卫生情况。</li>
+                <li>统一培训工作流程、服务标准、用餐礼仪和住宿纪律。</li>
+                <li>提前踩点，熟悉教学点、住宿、餐饮和活动场地。</li>
+              </ul>
+
+              <div class="key">重点二次确认：名单与分班分房、到达信息、活动物料。</div>
+
+              <h4>物资清点标准</h4>
+              <ul>
+                <li>数量准确：按照物料清单逐项核对。</li>
+                <li>分类打包：按类别装袋并贴上清晰标签。</li>
+                <li>质量合格：检查物品完整性，破损物品及时更换。</li>
+                <li>签字确认：领取后由营长签字留档。</li>
+              </ul>
+
+              <h4>统一执行文件</h4>
+              <table>
+                <thead>
+                  <tr><th>表格名称</th><th>主要内容</th><th>使用人</th><th>归档要求</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>签到表</td><td>分组名单、每日出勤记录</td><td>班主任</td><td>每日更新，营后汇总</td></tr>
+                  <tr><td>分房分组表</td><td>房间及分组安排</td><td>班主任、生活老师</td><td>开营前最终版</td></tr>
+                  <tr><td>生活白皮书</td><td>健康、用药、活动记录</td><td>生活老师</td><td>每日留档</td></tr>
+                  <tr><td>电子设备记录表</td><td>设备收发登记</td><td>班主任</td><td>每日更新</td></tr>
+                  <tr><td>突发问题记录表</td><td>突发问题及处理过程</td><td>总营长、营长</td><td>每期营期统计</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="during" class="subsection">
+              <h3>2. 营期中</h3>
+              <ul>
+                <li>人员落位：开营日完成接机、签到、开营准备和入住安排。</li>
+                <li>流程管控：全程关注活动节奏，出现时间偏差时及时调整。</li>
+                <li>执行话术：每个关键环节开始前 5 分钟发送执行群。</li>
+                <li>高光品控：督促拍摄，收集照片、视频和家长好评。</li>
+                <li>环节沟通：提前对接教学点、餐饮、讲师和下一环节负责人。</li>
+                <li>学员统计：完成考勤、生活白名单、电子设备收发登记。</li>
+                <li>每日复盘：记录人员状态、执行问题和第二天改进措施。</li>
+                <li>风险处理：不慌乱、不发脾气，按 SOP 处理并当日归档。</li>
+              </ul>
+
+              <div class="key">营期中的核心是执行、沟通、复盘；风险事件必须当日处理、当日留痕、当日归档。</div>
+
+              <h4>开营仪式流程</h4>
+              <ol>
+                <li>提前准备开营物料。</li>
+                <li>完成老师介绍。</li>
+                <li>重点介绍营内纪律。</li>
+                <li>介绍营期行程。</li>
+                <li>统一发放物资。</li>
+                <li>通过互动和破冰调节气氛。</li>
+              </ol>
+            </section>
+          </article>
+
+          <article id="chapter3" class="card chapter reveal">
+            <div class="chapter-label">Chapter 03</div>
+            <h2>三、绩效考核</h2>
+
+            <div class="blue-key">所有营地工作人员以 100 分为基础分，核心考核维度为安全、满意、准时。</div>
+
+            <table>
+              <thead>
+                <tr><th>等级</th><th>扣分</th><th>典型情况</th><th>管理要求</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>轻微级</td><td>5 分</td><td>遗漏必要动作、未按 SOP 执行，但未造成伤害或投诉。</td><td>立即整改并复盘。</td></tr>
+                <tr><td>中等级</td><td>10 分</td><td>执行错误造成轻微影响，出现不满、轻伤或投诉。</td><td>提交整改方案。</td></tr>
+                <tr><td>严重级</td><td>20 分</td><td>执行严重错误，造成较重伤害，但影响未扩散。</td><td>专项复盘，重点跟踪。</td></tr>
+                <tr><td>重大级</td><td>30 分</td><td>管理失职导致重大事故，影响合作或品牌声誉。</td><td>启动问责机制。</td></tr>
+              </tbody>
+            </table>
+
+            <h3>考核五大原则</h3>
+            <ul>
+              <li>安全一票否决：重大安全事件直接取消评优资格。</li>
+              <li>不重复扣罚：同一事件按照最高等级扣分。</li>
+              <li>责任共担：营长承担管理责任，班主任承担执行责任。</li>
+              <li>鼓励主动预防：成功避免事故可申请专项加分。</li>
+              <li>闭环管理：所有扣分事项均需书面记录、复盘和整改。</li>
+            </ul>
+
+            <h3>绩效结果</h3>
+            <div class="data-grid">
+              <div class="card data-card"><div class="num">70%</div><div class="label">绩效得分 ≤ 60 分</div></div>
+              <div class="card data-card"><div class="num">90%</div><div class="label">60 分 ＜ 得分 ≤ 80 分</div></div>
+              <div class="card data-card"><div class="num">95%</div><div class="label">80 分 ＜ 得分 ≤ 90 分</div></div>
+              <div class="card data-card"><div class="num">100%</div><div class="label">90 分 ＜ 得分 ≤ 100 分</div></div>
+            </div>
+          </article>
+
+          <article id="chapter4" class="card chapter reveal">
+            <div class="chapter-label">Chapter 04</div>
+            <h2>四、营地安全</h2>
+
+            <section id="risk" class="subsection">
+              <h3>1. 风险管理</h3>
+              <div class="key">事故 = 风险 × 管理漏洞。事故并非偶然，安全管理的重点是提前发现并消除漏洞。</div>
+              <p>完整闭环为：发现风险 → 建立机制 → 监督执行 → 持续改进。</p>
+
+              <h4>八大风险来源</h4>
+              <ul>
+                <li>学生：情绪异常、身体不适、社交冲突、行为异常。</li>
+                <li>教师：疲劳、情绪波动、违规行为、执行偏差。</li>
+                <li>场地：宿舍、教室、食堂、卫生间、活动区。</li>
+                <li>设备：工具、热水壶、陶瓷、硬物等。</li>
+                <li>活动：户外运动、高风险课程。</li>
+                <li>交通：接送车辆、外出活动交通。</li>
+                <li>食品：食材来源、加工过程、过敏源管理。</li>
+                <li>舆情：家长投诉、网络传播、社交媒体。</li>
+              </ul>
+
+              <h4>三类重点风险</h4>
+              <div class="mini-grid">
+                <div class="mini-card"><h4>高概率风险</h4><p>跌倒、擦伤、冲突等高频事件，需要日常防控。</p></div>
+                <div class="mini-card"><h4>高损失风险</h4><p>骨折、走失、食品安全等后果严重事件，需要重点布防。</p></div>
+                <div class="mini-card"><h4>高舆情风险</h4><p>儿童保护、教师违规、家长投诉，实行零容忍。</p></div>
+              </div>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="child" class="subsection">
+              <h3>2. 儿童保护</h3>
+              <div class="blue-key">儿童保护是营地最高等级风险，执行双人、可视、公开、留痕四项原则。</div>
+
+              <ul>
+                <li>双人原则：不得长期单独与学生相处，应保证第三人在场。</li>
+                <li>可视原则：教学互动在公开、可视空间进行。</li>
+                <li>公开原则：师生互动对家长和管理者透明。</li>
+                <li>留痕原则：关键互动、异常事件和沟通记录全部保存。</li>
+              </ul>
+
+              <div class="key">教师六条红线：禁止单独在密闭空间接触学生、禁止主动私联学生、禁止添加学生私人联系方式、禁止辱骂、禁止体罚、禁止不当身体接触。</div>
+
+              <h4>儿童保护事件上报</h4>
+              <p>学生受伤、生病、情绪特别异常、走失或疑似教师违规时，必须第一时间按照统一格式上报。</p>
+              <div class="blue-key">上报格式：班级 + 学生姓名 + 性别 + 原因 + 症状 + 当前地点 + 是否需要支援。</div>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="inspection" class="subsection">
+              <h3>3. 每日巡检</h3>
+              <div class="mini-grid">
+                <div class="mini-card"><h4>学生状态</h4><p>情绪、身体、社交和行为异常，发现后立即记录并跟进。</p></div>
+                <div class="mini-card"><h4>教师状态</h4><p>疲劳、情绪波动、违规行为和执行偏差。</p></div>
+                <div class="mini-card"><h4>教室与宿舍</h4><p>安全隐患、卫生、防护、通风和照明。</p></div>
+                <div class="mini-card"><h4>活动区域</h4><p>设备、防护、标识和应急预案。</p></div>
+                <div class="mini-card"><h4>高风险课程</h4><p>化学实验、热熔胶、电路、工具使用等需配备护目镜和手套。</p></div>
+                <div class="mini-card"><h4>应急物资</h4><p>急救箱、烫伤膏、创可贴、退热贴定期检查补充。</p></div>
+              </div>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="warning" class="subsection">
+              <h3>4. 三级预警</h3>
+              <table>
+                <thead>
+                  <tr><th>等级</th><th>典型情况</th><th>处理要求</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>蓝色预警</td><td>轻微擦伤、轻微矛盾</td><td>现场处理、登记并持续观察。</td></tr>
+                  <tr><td>黄色预警</td><td>情绪异常、身体不适、持续哭泣、不参加活动、呕吐拉稀</td><td>生活老师观察并同步班主任，管理介入。</td></tr>
+                  <tr><td>红色预警</td><td>骨折、高烧、抽搐、走失、打架受伤、疑似儿童伤害、多人呕吐腹泻</td><td>班主任立即通知营长和总营长，启动应急预案。</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="incident" class="subsection">
+              <h3>5. 突发事件处理</h3>
+              <ol>
+                <li>快速响应：第一时间到达现场，确保学生安全并进行初步处置。</li>
+                <li>快速上报：准确记录时间、地点、人物、事件、处理措施和当前状态。</li>
+                <li>通知家长：如实告知并持续更新处理进展。</li>
+                <li>记录归档：保存事件记录、沟通记录、照片视频和医疗资料。</li>
+                <li>送医与理赔：必要时陪同送医，保留病历、票据并协助保险理赔。</li>
+              </ol>
+              <div class="key">处理原则：先保证安全，再上报沟通；问题解决后必须完成书面归档和复盘。</div>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="parents" class="subsection">
+              <h3>6. 家长沟通与舆情</h3>
+              <h4>家长沟通四原则</h4>
+              <ul>
+                <li>第一时间告知：事故发生后立即通知，不拖延、不隐瞒。</li>
+                <li>如实反馈：只讲事实，不猜测、不推卸、不夸大。</li>
+                <li>持续更新：处理过程中让家长持续了解进展。</li>
+                <li>统一口径：对外信息由营长或指定人员统一发布。</li>
+              </ul>
+
+              <h4>投诉升级四大原因</h4>
+              <ul>
+                <li>拖延：迟迟不回应，让家长等待和焦虑。</li>
+                <li>隐瞒：不如实告知，被发现后信任崩塌。</li>
+                <li>推责：互相甩锅，不主动解决问题。</li>
+                <li>失联：负责人联系不上，形成信息真空。</li>
+              </ul>
+
+              <div class="key">家长最不能接受的，不一定是孩子受伤，而是隐瞒、失联和没有回应。</div>
+
+              <h4>舆情管理“五不做”</h4>
+              <ul>
+                <li>不猜测：不对事件原因做主观推测。</li>
+                <li>不承诺：不承诺无法保证的结果。</li>
+                <li>不争辩：不在公开渠道与家长争论。</li>
+                <li>不删记录：所有沟通记录保留，不删除、不篡改。</li>
+                <li>只讲事实：对外沟通基于客观事实并统一口径。</li>
+              </ul>
+            </section>
+
+            <div class="space"></div>
+
+            <section id="discipline" class="subsection">
+              <h3>7. 工作纪律</h3>
+              <ul>
+                <li>严禁沉迷手机，忽视学生管理。</li>
+                <li>学生必须始终处于老师监管范围内，不得单独离队。</li>
+                <li>不得在学生面前吸烟、饮酒或说脏话。</li>
+                <li>工作中禁止情绪化、难沟通和破坏团队协作的言行。</li>
+                <li>不得让学生饮用不健康食品或饮品，应结合营地规定执行。</li>
+                <li>营期内统一穿着工作服，不穿个人服装执行工作。</li>
+                <li>每天检查房间饮水情况，提醒学生安全使用热水。</li>
+                <li>不得以“我是兼职老师”等理由推卸责任。</li>
+                <li>带营期间保持手机提示音开启，确保第一时间接收指令。</li>
+                <li>禁止使用带有歧视或侮辱性质的外号称呼学生。</li>
+              </ul>
+
+              <div class="blue-key">优秀的标准：让老师有标准、让学生有保障、让家长有信任、让风险被控制。</div>
+            </section>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="cta">
+        <h2>把标准变成稳定的执行。</h2>
+        <p>真正优秀的营地，不是没有问题，而是能够提前识别风险、统一标准、快速响应，并通过复盘持续改进。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#chapter1">重新阅读</a>
+          <button class="btn btn-secondary" onclick="window.print()">打印当前文档</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>营地运营培训总结笔记</span>
+    <span>适用于个人网站展示、内部复习与打印</span>
+  </footer>
+
+  <button class="back-top" aria-label="返回顶部">↑</button>
+
+  <script>
+    // 滚动淡入动画
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    // 目录高亮
+    const sections = [...document.querySelectorAll('article[id], section.subsection[id]')];
+    const tocLinks = [...document.querySelectorAll('.toc-list a')];
+
+    const activateToc = () => {
+      let current = '';
+      sections.forEach((section) => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 130) current = section.id;
+      });
+
+      tocLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    };
+
+    window.addEventListener('scroll', activateToc, { passive: true });
+    activateToc();
+
+    // 返回顶部按钮
+    const backTop = document.querySelector('.back-top');
+
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('show', window.scrollY > 700);
+    }, { passive: true });
+
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 平滑锚点跳转，兼容固定导航栏
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const id = link.getAttribute('href');
+        if (!id || id === '#') return;
+
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        event.preventDefault();
+        const offset = 78;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
